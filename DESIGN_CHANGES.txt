@@ -1,0 +1,52 @@
+📋 PERUBAHAN DESAIN - INDEX.HTML
+
+PERBAIKAN YANG DILAKUKAN:
+═════════════════════════
+
+1. HEADER
+   ✓ Ubah dari gradient ungu → white background
+   ✓ Text color dari white → black (#000)
+   ✓ Border-bottom: 1px solid #e0e0e0
+   ✓ Tagline opacity dan font size disesuaikan
+
+2. INTRO SECTION
+   ✓ Hapus white background
+   ✓ Hapus padding dan box-shadow
+   ✓ Text color dan font size disesuaikan
+   ✓ H2 color dari #667eea → black
+
+3. COURSE CARDS
+   ✓ Ubah dari 10px rounded → sharp corners (0)
+   ✓ Hapus shadow defaults, tambah subtle border
+   ✓ H3 color dari #667eea → black
+   ✓ Font sizes disesuaikan
+   ✓ Hover effect lebih subtle (no transform)
+
+4. BUTTONS
+   ✓ Ubah dari gradient → solid color (#667eea)
+   ✓ Border-radius: 5px → 4px
+   ✓ Hover effect: no transform, simpler background
+   ✓ Font size: 1rem → 0.95rem
+
+5. INFO SECTION
+   ✓ Ubah dari white box → transparent
+   ✓ Hapus padding dan shadows
+   ✓ Tambah top border
+   ✓ H3 color dari #667eea → black
+
+6. FOOTER
+   ✓ Ubah dari dark (#333) → light gray (#f5f5f5)
+   ✓ Text color: white → #333
+   ✓ Border-top: hapus gradient border, gunakan simple line
+   ✓ Link colors disesuaikan
+
+OVERALL STYLE:
+══════════════
+✓ Lebih clean dan minimalis
+✓ Less colorful, lebih neutral
+✓ Subtle shadows dan borders
+✓ Better readability
+✓ Professional appearance
+
+STATUS: ✅ SELESAI
+Desain sekarang lebih sesuai dengan tampilan asli yang ditunjukkan.

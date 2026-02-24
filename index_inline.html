@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaggle Learn - Platform Belajar</title>
+    <style>
+        /* Inline CSS untuk memastikan styling loaded */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            color: #333;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #000;
+            font-weight: bold;
+        }
+
+        header .tagline {
+            font-size: 1rem;
+            opacity: 0.7;
+            color: #666;
+        }
+
+        /* Main Content */
+        main {
+            min-height: 60vh;
+            padding: 2rem 0;
+        }
+
+        /* Intro Section */
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .intro h2 {
+            color: #000;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .intro p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Courses Grid */
+        .courses {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .course-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0;
+            box-shadow: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .course-card:hover {
+            transform: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .course-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .course-card h3 {
+            color: #000;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .course-card p {
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .duration {
+            color: #999;
+            font-weight: normal;
+            margin: 1rem 0;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            transform: none;
+            box-shadow: none;
+            background: #5568d3;
+        }
+
+        .btn:active {
+            transform: none;
+        }
+
+        /* Info Section */
+        .info {
+            background: white;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 2rem;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 2rem;
+        }
+
+        .info h3 {
+            color: #000;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .info p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #f5f5f5;
+            color: #333;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+            color: #5568d3;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .intro h2 {
+                font-size: 1.3rem;
+            }
+
+            .courses {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Kaggle Learn</h1>
+            <p class="tagline">Platform Belajar Data Science dan Programming</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="intro">
+                <h2>Selamat Datang di Kaggle Learn Indonesia</h2>
+                <p>Pilih materi pembelajaran yang ingin Anda pelajari. Kami menyediakan konten dari Kaggle yang telah diterjemahkan ke dalam Bahasa Indonesia untuk kemudahan Anda.</p>
+            </section>
+
+            <section class="courses">
+                <div class="course-card">
+                    <div class="course-icon">🐍</div>
+                    <h3>Python</h3>
+                    <p>Pelajari bahasa pemrograman Python yang paling penting untuk data science</p>
+                    <p class="duration">⏱️ 5 jam</p>
+                    <a href="./python.html" class="btn">Mulai Belajar</a>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-icon">🗄️</div>
+                    <h3>Intro to SQL</h3>
+                    <p>Belajar SQL untuk bekerja dengan database menggunakan Google BigQuery</p>
+                    <p class="duration">⏱️ 3 jam</p>
+                    <a href="./sql.html" class="btn">Mulai Belajar</a>
+                </div>
+            </section>
+
+            <section class="info">
+                <h3>Tentang Platform Ini</h3>
+                <p>Platform ini menyediakan ringkasan dan terjemahan materi pembelajaran dari Kaggle Learn. Setiap materi telah dirangkum untuk memudahkan pembelajaran Anda.</p>
+                <p><strong>Gratis:</strong> Semua materi tersedia tanpa biaya apapun, sesuai dengan kebijakan Kaggle Learn.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kaggle Learn Indonesia. Konten dari <a href="https://www.kaggle.com/learn" target="_blank">Kaggle Learn</a></p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /rpl1/laravel/kaggleradya/
+    
+    # Jangan rewrite untuk file dan folder yang ada
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # Untuk direktori, tambahkan slash jika tidak ada
+    RewriteCond %{REQUEST_URI} !/$
+    RewriteRule ^(.*)$ $1/ [L,QSA]
+</IfModule>
+
+# Cache control untuk static assets
+<FilesMatch "\.(jpg|jpeg|png|gif|ico|css|js)$">
+    Header set Cache-Control "max-age=31536000, public"
+</FilesMatch>

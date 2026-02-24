@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL - Kaggle Learn Indonesia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: white;
+            color: #333;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #000;
+            font-weight: bold;
+        }
+
+        main {
+            min-height: 60vh;
+            padding: 2rem 0;
+        }
+
+        .breadcrumb {
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+            margin-right: 0.5rem;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        h2 {
+            color: #000;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .lessons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .lesson-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0;
+            box-shadow: none;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .lesson-card:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .lesson-card h3 {
+            color: #000;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .lesson-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            background: #5568d3;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .back-btn:hover {
+            background: #f5f5f5;
+        }
+
+        footer {
+            background: #f5f5f5;
+            color: #333;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            .lessons {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🗄️ Intro to SQL</h1>
+            <p>Pelajari SQL untuk Bekerja dengan Database</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <a href="./index_inline.html" class="back-btn">← Kembali ke Beranda</a>
+
+            <h2>Daftar Pelajaran</h2>
+
+            <div class="lessons">
+                <div class="lesson-card">
+                    <h3>1. SQL & BigQuery Basics</h3>
+                    <p>Pengenalan SQL dan Google BigQuery: konsep dasar, struktur query, dan setup lingkungan kerja.</p>
+                    <a href="./lessons/sql-01.html" class="btn">Pelajari →</a>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>2. SELECT, FROM, WHERE</h3>
+                    <p>Memahami query dasar SQL: SELECT untuk memilih kolom, FROM untuk memilih tabel, dan WHERE untuk filter.</p>
+                    <a href="./lessons/sql-02.html" class="btn">Pelajari →</a>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>3. GROUP BY, HAVING, COUNT</h3>
+                    <p>Mengagregasi data dengan GROUP BY, memfilter grup dengan HAVING, dan menghitung jumlah dengan COUNT.</p>
+                    <a href="./lessons/sql-03.html" class="btn">Pelajari →</a>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>4. ORDER BY</h3>
+                    <p>Mengurutkan hasil query dengan ORDER BY: ascending, descending, dan menggunakan LIMIT untuk paginasi.</p>
+                    <a href="./lessons/sql-04.html" class="btn">Pelajari →</a>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>5. AS & WITH</h3>
+                    <p>Memberikan alias dengan AS dan membuat Common Table Expressions (CTE) menggunakan WITH untuk query kompleks.</p>
+                    <a href="./lessons/sql-05.html" class="btn">Pelajari →</a>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>6. JOIN</h3>
+                    <p>Menggabungkan tabel dengan berbagai jenis JOIN: INNER, LEFT, FULL OUTER, dan CROSS JOIN.</p>
+                    <a href="./lessons/sql-06.html" class="btn">Pelajari →</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kaggle Learn Indonesia</p>
+        </div>
+    </footer>
+</body>
+</html>
