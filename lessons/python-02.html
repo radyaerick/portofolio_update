@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fungsi dan Mendapatkan Bantuan - Kaggle Learn Indonesia</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="../python.html" class="back-btn">← Kembali ke Python</a>
+            <h1>Fungsi dan Mendapatkan Bantuan</h1>
+            <p class="tagline">Pelajaran 2: Menulis dan Menggunakan Fungsi</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="lesson-content">
+                <h2>📚 Fungsi dan Mendapatkan Bantuan - Pelajaran 2</h2>
+
+                <h3>Apa itu Fungsi?</h3>
+                <p>Fungsi adalah blok kode yang dapat digunakan kembali untuk melakukan tugas tertentu. Fungsi membantu membuat kode lebih terorganisir, mudah dibaca, dan dapat digunakan kembali.</p>
+
+                <h3>Mendeklarasikan Fungsi</h3>
+                <p>Untuk membuat fungsi, kita menggunakan kata kunci <code>def</code> diikuti dengan nama fungsi dan tanda kurung.</p>
+
+                <div class="code-example">
+                    <code>
+# Fungsi tanpa parameter<br>
+def salam():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print("Halo, selamat datang!")<br>
+<br>
+# Memanggil fungsi<br>
+salam()  # Output: Halo, selamat datang!<br>
+                    </code>
+                </div>
+
+                <h3>Fungsi dengan Parameter</h3>
+                <p>Parameter adalah nilai yang diterima oleh fungsi. Dengan parameter, fungsi dapat beroperasi pada data yang berbeda.</p>
+
+                <div class="code-example">
+                    <code>
+# Fungsi dengan satu parameter<br>
+def salam(nama):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print("Halo, " + nama)<br>
+<br>
+salam("Budi")      # Output: Halo, Budi<br>
+salam("Ani")       # Output: Halo, Ani<br>
+<br>
+# Fungsi dengan multiple parameter<br>
+def tambah(a, b):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return a + b<br>
+<br>
+hasil = tambah(5, 3)  # hasil = 8<br>
+                    </code>
+                </div>
+
+                <h3>Return Statement</h3>
+                <p>Pernyataan <code>return</code> digunakan untuk mengembalikan nilai dari fungsi. Ketika fungsi mencapai return, eksekusi fungsi berhenti dan nilai dikembalikan ke pemanggil.</p>
+
+                <div class="code-example">
+                    <code>
+def luas_lingkaran(jari_jari):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;import math<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return math.pi * jari_jari ** 2<br>
+<br>
+hasil = luas_lingkaran(5)<br>
+print(hasil)  # Output: 78.53981633974483<br>
+                    </code>
+                </div>
+
+                <h3>Scope (Cakupan Variabel)</h3>
+                <p>Scope menentukan di mana variabel dapat diakses. Variabel yang didefinisikan di dalam fungsi hanya dapat diakses di dalam fungsi tersebut.</p>
+
+                <div class="code-example">
+                    <code>
+def test_scope():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x = 10  # Variabel lokal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print(x)  # Bisa diakses<br>
+<br>
+test_scope()  # Output: 10<br>
+print(x)      # Error: x tidak terdefinisi di luar fungsi<br>
+                    </code>
+                </div>
+
+                <h3>Mendapatkan Bantuan (Help)</h3>
+                <p>Python memiliki sistem bantuan bawaan yang dapat membantu Anda memahami fungsi dan modul. Gunakan fungsi <code>help()</code> atau tanda <code>?</code> di Jupyter Notebook.</p>
+
+                <div class="code-example">
+                    <code>
+# Mendapatkan bantuan tentang fungsi<br>
+help(print)<br>
+help(len)<br>
+<br>
+# Atau gunakan ? di Jupyter<br>
+?print<br>
+                    </code>
+                </div>
+
+                <h3>Default Parameter</h3>
+                <p>Anda dapat memberikan nilai default untuk parameter. Jika parameter tidak diberikan saat memanggil fungsi, nilai default akan digunakan.</p>
+
+                <div class="code-example">
+                    <code>
+def salam(nama, sapaan="Halo"):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print(sapaan + ", " + nama)<br>
+<br>
+salam("Budi")                    # Output: Halo, Budi<br>
+salam("Ani", "Selamat pagi")     # Output: Selamat pagi, Ani<br>
+                    </code>
+                </div>
+
+                <h3>Fungsi Built-in Python</h3>
+                <p>Python menyediakan banyak fungsi bawaan yang siap digunakan tanpa harus dibuat sendiri.</p>
+
+                <ul>
+                    <li><code>len()</code> - Mengembalikan panjang/jumlah elemen</li>
+                    <li><code>max()</code> - Mengembalikan nilai maksimum</li>
+                    <li><code>min()</code> - Mengembalikan nilai minimum</li>
+                    <li><code>sum()</code> - Mengembalikan jumlah elemen</li>
+                    <li><code>type()</code> - Mengembalikan tipe data</li>
+                    <li><code>str()</code> - Mengubah ke string</li>
+                    <li><code>int()</code> - Mengubah ke integer</li>
+                    <li><code>float()</code> - Mengubah ke float</li>
+                </ul>
+
+                <div class="tip">
+                    <strong>💡 Tips:</strong>
+                    <p>Gunakan nama fungsi yang deskriptif agar kode lebih mudah dipahami. Hindari menggunakan nama fungsi bawaan Python untuk fungsi Anda sendiri.</p>
+                </div>
+
+                <h3>Ringkasan Pelajaran</h3>
+                <ul>
+                    <li>Fungsi adalah blok kode yang dapat digunakan kembali</li>
+                    <li>Deklarasikan fungsi dengan <code>def</code></li>
+                    <li>Parameter memungkinkan fungsi menerima nilai</li>
+                    <li>Return statement mengembalikan nilai dari fungsi</li>
+                    <li>Gunakan <code>help()</code> untuk mendapatkan bantuan</li>
+                    <li>Parameter dapat memiliki nilai default</li>
+                </ul>
+
+                <div class="navigation">
+                    <a href="python-01.html" class="btn">← Pelajaran Sebelumnya</a>
+                    <a href="python-03.html" class="btn">Pelajaran Selanjutnya →</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kaggle Learn Indonesia</p>
+        </div>
+    </footer>
+</body>
+</html>

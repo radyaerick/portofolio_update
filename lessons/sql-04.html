@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order By - Kaggle Learn Indonesia</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="../sql.html" class="back-btn">← Kembali ke SQL</a>
+            <h1>Order By</h1>
+            <p class="tagline">Pelajaran 4: Mengurutkan Hasil Query</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="lesson-content">
+                <h2>📚 Order By - Pelajaran 4</h2>
+
+                <h3>Apa itu ORDER BY?</h3>
+                <p>ORDER BY digunakan untuk mengurutkan hasil query berdasarkan satu atau lebih kolom. Hasil dapat diurutkan secara ascending (naik) atau descending (turun).</p>
+
+                <h3>Syntax ORDER BY</h3>
+                <div class="code-example">
+                    <code>
+SELECT kolom1, kolom2, ...<br>
+FROM nama_tabel<br>
+ORDER BY kolom1, kolom2, ... ASC|DESC;<br>
+                    </code>
+                </div>
+
+                <h3>ORDER BY Ascending (Urutan Naik)</h3>
+                <p>Ascending (ASC) adalah urutan default. Data diurutkan dari nilai kecil ke besar, atau dari A ke Z untuk string.</p>
+
+                <div class="code-example">
+                    <code>
+-- Urutkan siswa berdasarkan nama (A-Z)<br>
+SELECT * FROM siswa ORDER BY nama;<br>
+<br>
+-- Sama dengan:<br>
+SELECT * FROM siswa ORDER BY nama ASC;<br>
+<br>
+-- Output:<br>
+-- | nama  | umur | kota      |<br>
+-- | Ani   | 19   | Bandung   |<br>
+-- | Budi  | 20   | Jakarta   |<br>
+-- | Citra | 21   | Surabaya  |<br>
+                    </code>
+                </div>
+
+                <h3>ORDER BY Descending (Urutan Turun)</h3>
+                <p>Descending (DESC) mengurutkan data dari nilai besar ke kecil, atau dari Z ke A untuk string.</p>
+
+                <div class="code-example">
+                    <code>
+-- Urutkan siswa berdasarkan umur (besar ke kecil)<br>
+SELECT * FROM siswa ORDER BY umur DESC;<br>
+<br>
+-- Output:<br>
+-- | nama  | umur | kota      |<br>
+-- | Citra | 21   | Surabaya  |<br>
+-- | Budi  | 20   | Jakarta   |<br>
+-- | Ani   | 19   | Bandung   |<br>
+                    </code>
+                </div>
+
+                <h3>ORDER BY Multiple Kolom</h3>
+                <p>Anda dapat mengurutkan berdasarkan lebih dari satu kolom. Kolom pertama adalah prioritas utama.</p>
+
+                <div class="code-example">
+                    <code>
+-- Urutkan berdasarkan kota (ASC), kemudian berdasarkan umur (DESC)<br>
+SELECT * FROM siswa<br>
+ORDER BY kota ASC, umur DESC;<br>
+<br>
+-- Output:<br>
+-- | nama  | umur | kota      |<br>
+-- | Ani   | 19   | Bandung   |<br>
+-- | Budi  | 20   | Jakarta   |<br>
+-- | Citra | 21   | Surabaya  |<br>
+                    </code>
+                </div>
+
+                <h3>ORDER BY dengan WHERE</h3>
+                <p>ORDER BY dapat dikombinasikan dengan WHERE untuk memfilter dan mengurutkan data.</p>
+
+                <div class="code-example">
+                    <code>
+-- Siswa dari Jakarta, diurutkan berdasarkan umur<br>
+SELECT * FROM siswa<br>
+WHERE kota = 'Jakarta'<br>
+ORDER BY umur DESC;<br>
+<br>
+-- Siswa dengan umur > 19, diurutkan berdasarkan nama<br>
+SELECT nama, umur FROM siswa<br>
+WHERE umur > 19<br>
+ORDER BY nama ASC;<br>
+                    </code>
+                </div>
+
+                <h3>ORDER BY dengan Fungsi Agregat</h3>
+                <p>ORDER BY dapat digunakan dengan GROUP BY untuk mengurutkan hasil agregat.</p>
+
+                <div class="code-example">
+                    <code>
+-- Hitung siswa per kota, urutkan dari jumlah terbanyak<br>
+SELECT kota, COUNT(*) as jumlah_siswa<br>
+FROM siswa<br>
+GROUP BY kota<br>
+ORDER BY jumlah_siswa DESC;<br>
+<br>
+-- Output:<br>
+-- | kota     | jumlah_siswa |<br>
+-- | Jakarta  | 2            |<br>
+-- | Bandung  | 1            |<br>
+-- | Surabaya | 1            |<br>
+                    </code>
+                </div>
+
+                <h3>ORDER BY dengan Column Number</h3>
+                <p>Anda dapat mengurutkan menggunakan nomor kolom (posisi) bukan nama kolom.</p>
+
+                <div class="code-example">
+                    <code>
+-- Urutkan berdasarkan kolom ke-1 (nama)<br>
+SELECT nama, umur FROM siswa ORDER BY 1;<br>
+<br>
+-- Urutkan berdasarkan kolom ke-2 (umur) descending<br>
+SELECT nama, umur FROM siswa ORDER BY 2 DESC;<br>
+                    </code>
+                </div>
+
+                <h3>LIMIT</h3>
+                <p>LIMIT digunakan untuk membatasi jumlah baris yang dikembalikan. Sering dikombinasikan dengan ORDER BY.</p>
+
+                <div class="code-example">
+                    <code>
+-- 3 siswa dengan umur tertinggi<br>
+SELECT * FROM siswa<br>
+ORDER BY umur DESC<br>
+LIMIT 3;<br>
+<br>
+-- Siswa pertama dalam urutan nama<br>
+SELECT * FROM siswa<br>
+ORDER BY nama<br>
+LIMIT 1;<br>
+<br>
+-- Ambil 2 baris, mulai dari baris ke-2<br>
+SELECT * FROM siswa<br>
+ORDER BY nama<br>
+LIMIT 2 OFFSET 1;<br>
+                    </code>
+                </div>
+
+                <h3>ORDER BY NULL</h3>
+                <p>Ketika mengurutkan, NULL biasanya muncul di awal atau akhir tergantung database.</p>
+
+                <div class="code-example">
+                    <code>
+-- Urutkan dengan NULL di akhir (BigQuery)<br>
+SELECT * FROM siswa<br>
+ORDER BY kota IS NULL, kota ASC;<br>
+                    </code>
+                </div>
+
+                <h3>Contoh Query Lengkap</h3>
+                <p>Berikut adalah contoh query yang menggabungkan SELECT, FROM, WHERE, GROUP BY, HAVING, dan ORDER BY:</p>
+
+                <div class="code-example">
+                    <code>
+-- Kota dengan minimal 2 siswa, urutkan dari rata-rata umur tertinggi<br>
+SELECT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;kota,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;COUNT(*) as jumlah_siswa,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;AVG(umur) as rata_rata_umur<br>
+FROM siswa<br>
+GROUP BY kota<br>
+HAVING COUNT(*) >= 2<br>
+ORDER BY rata_rata_umur DESC;<br>
+                    </code>
+                </div>
+
+                <h3>Urutan Eksekusi Query SQL</h3>
+                <p>Penting untuk memahami urutan eksekusi query SQL:</p>
+
+                <ol>
+                    <li><code>FROM</code> - Tentukan tabel</li>
+                    <li><code>WHERE</code> - Filter baris</li>
+                    <li><code>GROUP BY</code> - Kelompokkan baris</li>
+                    <li><code>HAVING</code> - Filter grup</li>
+                    <li><code>SELECT</code> - Pilih kolom</li>
+                    <li><code>ORDER BY</code> - Urutkan hasil</li>
+                    <li><code>LIMIT</code> - Batasi jumlah baris</li>
+                </ol>
+
+                <div class="tip">
+                    <strong>💡 Tips:</strong>
+                    <p>ORDER BY ASC adalah default, jadi Anda tidak perlu menulisnya. Untuk performa terbaik, hindari mengurutkan berdasarkan kolom yang tidak di-index. Gunakan LIMIT untuk membatasi hasil jika dataset besar.</p>
+                </div>
+
+                <h3>Ringkasan Pelajaran</h3>
+                <ul>
+                    <li>ORDER BY mengurutkan hasil query</li>
+                    <li>ASC (ascending) adalah default, DESC untuk turun</li>
+                    <li>ORDER BY dapat menggunakan multiple kolom</li>
+                    <li>Dapat dikombinasikan dengan WHERE dan GROUP BY</li>
+                    <li>LIMIT membatasi jumlah baris yang dikembalikan</li>
+                    <li>Urutan eksekusi query penting untuk dipahami</li>
+                    <li>ORDER BY dengan LIMIT sangat berguna untuk mendapat data top-N</li>
+                </ul>
+
+                <div class="navigation">
+                    <a href="sql-03.html" class="btn">← Pelajaran Sebelumnya</a>
+                    <a href="sql-05.html" class="btn">Pelajaran Selanjutnya →</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kaggle Learn Indonesia</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>As & With - Kaggle Learn Indonesia</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="../sql.html" class="back-btn">← Kembali ke SQL</a>
+            <h1>As & With</h1>
+            <p class="tagline">Pelajaran 5: Alias dan Common Table Expression</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="lesson-content">
+                <h2>📚 As & With - Pelajaran 5</h2>
+
+                <h3>Apa itu AS (Alias)?</h3>
+                <p>AS digunakan untuk memberikan nama baru (alias) kepada kolom atau tabel. Alias membuat query lebih mudah dibaca dan memahami output yang dihasilkan.</p>
+
+                <h3>Alias untuk Kolom</h3>
+                <p>Alias kolom berguna ketika hasil perhitungan atau penamaan ulang diperlukan.</p>
+
+                <div class="code-example">
+                    <code>
+-- Alias untuk hasil perhitungan<br>
+SELECT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nama,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;umur AS usia,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;2025 - umur AS tahun_lahir<br>
+FROM siswa;<br>
+<br>
+-- Output:<br>
+-- | nama  | usia | tahun_lahir |<br>
+-- | Budi  | 20   | 2005        |<br>
+-- | Ani   | 19   | 2006        |<br>
+                    </code>
+                </div>
+
+                <h3>Alias untuk Tabel</h3>
+                <p>Alias tabel berguna ketika menggunakan JOIN atau subquery.</p>
+
+                <div class="code-example">
+                    <code>
+-- Alias tabel<br>
+SELECT s.nama, s.umur<br>
+FROM siswa AS s<br>
+WHERE s.umur > 19;<br>
+<br>
+-- Atau tanpa AS (juga valid)<br>
+SELECT s.nama, s.umur<br>
+FROM siswa s<br>
+WHERE s.umur > 19;<br>
+                    </code>
+                </div>
+
+                <h3>Alias dengan Spasi</h3>
+                <p>Jika alias mengandung spasi, gunakan tanda kutip atau backticks.</p>
+
+                <div class="code-example">
+                    <code>
+-- Dengan tanda kutip<br>
+SELECT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nama AS "Nama Siswa",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;COUNT(*) AS "Total Siswa"<br>
+FROM siswa;<br>
+                    </code>
+                </div>
+
+                <h3>Apa itu WITH (CTE)?</h3>
+                <p>WITH membuat Common Table Expression (CTE), yang merupakan temporary result set yang dapat direferensikan dalam query utama. CTE membuat query kompleks lebih mudah dibaca dan dipahami.</p>
+
+                <h3>Syntax WITH</h3>
+                <div class="code-example">
+                    <code>
+WITH nama_cte AS (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SELECT kolom FROM tabel<br>
+)<br>
+SELECT * FROM nama_cte;<br>
+                    </code>
+                </div>
+
+                <h3>Contoh Sederhana WITH</h3>
+                <p>Mari lihat contoh penggunaan WITH yang sederhana:</p>
+
+                <div class="code-example">
+                    <code>
+-- Buat CTE untuk siswa dewasa (umur >= 20)<br>
+WITH siswa_dewasa AS (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SELECT nama, umur<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FROM siswa<br>
+&nbsp;&nbsp;&nbsp;&nbsp;WHERE umur >= 20<br>
+)<br>
+SELECT * FROM siswa_dewasa<br>
+ORDER BY umur DESC;<br>
+<br>
+-- Output:<br>
+-- | nama  | umur |<br>
+-- | Citra | 21   |<br>
+-- | Budi  | 20   |<br>
+                    </code>
+                </div>
+
+                <h3>Multiple CTEs</h3>
+                <p>Anda dapat membuat lebih dari satu CTE dan menggunakannya bersama-sama.</p>
+
+                <div class="code-example">
+                    <code>
+WITH siswa_dewasa AS (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SELECT * FROM siswa WHERE umur >= 20<br>
+),<br>
+siswa_jakarta AS (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SELECT * FROM siswa WHERE kota = 'Jakarta'<br>
+)<br>
+SELECT * FROM siswa_dewasa<br>
+UNION ALL<br>
+SELECT * FROM siswa_jakarta;<br>
+                    </code>
+                </div>
+
+                <h3>CTE dengan Fungsi Agregat</h3>
+                <p>CTE sangat berguna ketika dikombinasikan dengan GROUP BY dan fungsi agregat.</p>
+
+                <div class="code-example">
+                    <code>
+-- CTE untuk hitung siswa per kota<br>
+WITH siswa_per_kota AS (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SELECT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kota,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COUNT(*) as jumlah_siswa,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AVG(umur) as rata_rata_umur<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FROM siswa<br>
+&nbsp;&nbsp;&nbsp;&nbsp;GROUP BY kota<br>
+)<br>
+SELECT *<br>
+FROM siswa_per_kota<br>
+WHERE jumlah_siswa > 1<br>
+ORDER BY rata_rata_umur DESC;<br>
+                    </code>
+                </div>
+
+                <h3>CTE untuk Menyederhanakan Query Kompleks</h3>
+                <p>CTE membuat query kompleks lebih mudah dipahami dengan membaginya menjadi bagian-bagian yang lebih kecil.</p>
+
+                <div class="code-example">
+                    <code>
+-- Query tanpa CTE (sulit dibaca)<br>
+SELECT kota, COUNT(*) as jumlah<br>
+FROM siswa<br>
+WHERE umur > 18<br>
+GROUP BY kota<br>
+HAVING COUNT(*) >= 1;<br>
+<br>
+-- Query dengan CTE (lebih mudah dibaca)<br>
+WITH siswa_filter AS (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-- Langkah 1: Filter siswa umur > 18<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SELECT kota, umur<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FROM siswa<br>
+&nbsp;&nbsp;&nbsp;&nbsp;WHERE umur > 18<br>
+)<br>
+-- Langkah 2: Kelompokkan per kota<br>
+SELECT kota, COUNT(*) as jumlah<br>
+FROM siswa_filter<br>
+GROUP BY kota<br>
+HAVING COUNT(*) >= 1;<br>
+                    </code>
+                </div>
+
+                <h3>Recursive CTE</h3>
+                <p>CTE dapat bersifat recursive (memanggil dirinya sendiri) untuk membuat urutan atau hierarki.</p>
+
+                <div class="code-example">
+                    <code>
+-- Buat urutan angka 1-5<br>
+WITH RECURSIVE urutan AS (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SELECT 1 as angka<br>
+&nbsp;&nbsp;&nbsp;&nbsp;UNION ALL<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SELECT angka + 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FROM urutan<br>
+&nbsp;&nbsp;&nbsp;&nbsp;WHERE angka < 5<br>
+)<br>
+SELECT * FROM urutan;<br>
+<br>
+-- Output: 1, 2, 3, 4, 5<br>
+                    </code>
+                </div>
+
+                <h3>Perbandingan Subquery dan CTE</h3>
+                <p>Subquery dan CTE dapat melakukan hal yang sama, tetapi CTE lebih mudah dibaca.</p>
+
+                <div class="code-example">
+                    <code>
+-- Menggunakan Subquery<br>
+SELECT *<br>
+FROM (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SELECT nama, umur<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FROM siswa<br>
+&nbsp;&nbsp;&nbsp;&nbsp;WHERE umur >= 20<br>
+) AS subquery<br>
+ORDER BY umur DESC;<br>
+<br>
+-- Menggunakan CTE (lebih mudah dibaca)<br>
+WITH siswa_dewasa AS (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SELECT nama, umur<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FROM siswa<br>
+&nbsp;&nbsp;&nbsp;&nbsp;WHERE umur >= 20<br>
+)<br>
+SELECT *<br>
+FROM siswa_dewasa<br>
+ORDER BY umur DESC;<br>
+                    </code>
+                </div>
+
+                <h3>Best Practices</h3>
+                <ul>
+                    <li>Gunakan alias yang deskriptif untuk memudahkan pemahaman</li>
+                    <li>Gunakan AS untuk clarity (meskipun opsional)</li>
+                    <li>Gunakan CTE untuk membuat query kompleks lebih mudah dibaca</li>
+                    <li>Beri nama CTE yang jelas dan deskriptif</li>
+                    <li>CTE hanya ada dalam scope query tersebut</li>
+                </ul>
+
+                <div class="tip">
+                    <strong>💡 Tips:</strong>
+                    <p>CTE adalah alat yang powerful untuk membuat query lebih mudah dipahami. Gunakan CTE ketika query Anda kompleks atau perlu dibagi menjadi beberapa langkah logis. Ini juga memudahkan debugging dan maintenance.</p>
+                </div>
+
+                <h3>Ringkasan Pelajaran</h3>
+                <ul>
+                    <li>AS memberikan nama baru (alias) kepada kolom atau tabel</li>
+                    <li>Alias kolom berguna untuk penamaan ulang dan result clarity</li>
+                    <li>Alias tabel berguna dalam JOIN dan subquery</li>
+                    <li>WITH membuat Common Table Expression (CTE)</li>
+                    <li>CTE membuat query kompleks lebih mudah dibaca</li>
+                    <li>CTE dapat bersifat multiple atau recursive</li>
+                    <li>CTE lebih mudah dibaca daripada subquery</li>
+                </ul>
+
+                <div class="navigation">
+                    <a href="sql-04.html" class="btn">← Pelajaran Sebelumnya</a>
+                    <a href="sql-06.html" class="btn">Pelajaran Selanjutnya →</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kaggle Learn Indonesia</p>
+        </div>
+    </footer>
+</body>
+</html>

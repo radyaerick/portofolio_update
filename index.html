@@ -1,56 +1,410 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaggle Learn - Platform Belajar</title>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1>Kaggle Learn</h1>
-            <p class="tagline">Platform Belajar Data Science dan Programming</p>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portfolio of Radya Erick Febriansyah - SMKN 5 Malang Student">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+      :root {
+        --primary-color: #6c757d;
+        --secondary-color: #b4b19d;
+        --dark-color: #343a40;
+        --light-color: #f8f9fa;
+      }
+      
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        overflow-x: hidden;
+      }
+      
+      /* Navbar */
+      .navbar {
+        transition: all 0.3s ease;
+      }
+      
+      .navbar.scrolled {
+        background-color: var(--dark-color) !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .nav-link {
+        position: relative;
+      }
+      
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: var(--light-color);
+        bottom: 0;
+        left: 0;
+        transition: width 0.3s ease;
+      }
+      
+      .nav-link:hover::after {
+        width: 100%;
+      }
+      
+      /* Jumbotron */
+      .jumbotron {
+        padding-top: 6rem;
+        background: linear-gradient(135deg, #b4b19d 0%, #6c757d 100%);
+        color: white;
+      }
+      
+      .img-thumbnail {
+        border: 5px solid white;
+        transition: transform 0.3s ease;
+      }
+      
+      .img-thumbnail:hover {
+        transform: scale(1.05);
+      }
+      
+      /* Sections */
+      section {
+        padding: 5rem 0;
+      }
+      
+      /* Projects */
+      .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+      }
+      
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+      
+      .card-img-top {
+        height: 200px;
+        object-fit: cover;
+      }
+      
+      /* Contact Form */
+      .form-control:focus {
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 0 0.25rem rgba(180, 177, 157, 0.25);
+      }
+      
+      .btn-primary {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+      }
+      
+      .btn-primary:hover {
+        background-color: #9c9987;
+        border-color: #9c9987;
+      }
+      
+      /* Footer */
+      footer {
+        padding: 2rem 0;
+      }
+      
+      /* Wave SVG */
+      .wave {
+        margin-bottom: -5px;
+      }
+      
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .jumbotron {
+          padding-top: 5rem;
+        }
+        
+        section {
+          padding: 3rem 0;
+        }
+      }
+    </style>
+
+    <title>Radya Erick | Portfolio</title>
+  </head>
+  <body id="home">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #b4b19d">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">Radya Erick</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index2.html">Riwayat Pendidikan</a>
+            </li>
+          </ul>
         </div>
-    </header>
+      </div>
+    </nav>
+    <!-- AKHIR NAVBAR -->
 
-    <main>
-        <div class="container">
-            <section class="intro">
-                <h2>Selamat Datang di Kaggle Learn Indonesia</h2>
-                <p>Pilih materi pembelajaran yang ingin Anda pelajari. Kami menyediakan konten dari Kaggle yang telah diterjemahkan ke dalam Bahasa Indonesia untuk kemudahan Anda.</p>
-            </section>
-
-            <section class="courses">
-                <div class="course-card">
-                    <div class="course-icon">🐍</div>
-                    <h3>Python</h3>
-                    <p>Pelajari bahasa pemrograman Python yang paling penting untuk data science</p>
-                    <p class="duration">⏱️ 5 jam</p>
-                    <a href="python.html" class="btn">Mulai Belajar</a>
-                </div>
-
-                <div class="course-card">
-                    <div class="course-icon">🗄️</div>
-                    <h3>Intro to SQL</h3>
-                    <p>Belajar SQL untuk bekerja dengan database menggunakan Google BigQuery</p>
-                    <p class="duration">⏱️ 3 jam</p>
-                    <a href="sql.html" class="btn">Mulai Belajar</a>
-                </div>
-            </section>
-
-            <section class="info">
-                <h3>Tentang Platform Ini</h3>
-                <p>Platform ini menyediakan ringkasan dan terjemahan materi pembelajaran dari Kaggle Learn. Setiap materi telah dirangkum untuk memudahkan pembelajaran Anda.</p>
-                <p><strong>Gratis:</strong> Semua materi tersedia tanpa biaya apapun, sesuai dengan kebijakan Kaggle Learn.</p>
-            </section>
+    <!-- Jumbotron -->
+    <section class="jumbotron text-center">
+      <div data-aos="fade-down" data-aos-duration="1000">
+        <img src="img/Gambar WhatsApp 2025-07-24 pukul 07.27.16_c51a1859.jpg" alt="Radya Erick" width="200" class="rounded-circle img-thumbnail mb-4" />
+        <h1 class="display-4 fw-bold">Radya Erick Febriansyah</h1>
+        <p class="lead">Student at SMKN 5 Malang | Automotive Enthusiast</p>
+        <div class="mt-4">
+          <a href="#projects" class="btn btn-light btn-lg mx-2">My Projects</a>
+          <a href="#contact" class="btn btn-outline-light btn-lg mx-2">Contact Me</a>
         </div>
-    </main>
+      </div>
+      <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#FFFFFF" fill-opacity="1" d="M0,160L16,181.3C32,203,64,245,96,256C128,267,160,245,192,202.7C224,160,256,96,288,64C320,32,352,32,384,69.3C416,107,448,181,480,218.7C512,256,544,256,576,234.7C608,213,640,171,672,160C704,149,736,171,768,181.3C800,192,832,192,864,181.3C896,171,928,149,960,128C992,107,1024,85,1056,85.3C1088,85,1120,107,1152,144C1184,181,1216,235,1248,256C1280,277,1312,267,1344,218.7C1376,171,1408,85,1424,42.7L1440,0L1440,320L1424,320C1408,320,1376,320,1344,320C1312,320,1280,320,1248,320C1216,320,1184,320,1152,320C1120,320,1088,320,1056,320C1024,320,992,320,960,320C928,320,896,320,864,320C832,320,800,320,768,320C736,320,704,320,672,320C640,320,608,320,576,320C544,320,512,320,480,320C448,320,416,320,384,320C352,320,320,320,288,320C256,320,224,320,192,320C160,320,128,320,96,320C64,320,32,320,16,320L0,320Z"></path>
+      </svg>
+    </section>
+    <!-- Akhir Jumbotron -->
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Kaggle Learn Indonesia. Konten dari <a href="https://www.kaggle.com/learn" target="_blank">Kaggle Learn</a></p>
+    <!-- About -->
+    <section id="about" class="bg-light">
+      <div class="container">
+        <div class="row text-center mb-5">
+          <div class="col">
+            <h2 class="fw-bold">About Me</h2>
+            <hr class="w-25 mx-auto">
+          </div>
         </div>
+        <div class="row justify-content-center fs-5">
+          <div class="col-md-5 mb-4" data-aos="fade-right" data-aos-duration="1000">
+            <div class="card h-100 border-0 shadow-sm">
+              <div class="card-body">
+                <h3 class="card-title text-center mb-3"><i class="bi bi-person-badge"></i> Personal</h3>
+                <p class="card-text">Halo! Nama saya Radya Erick Febriansyah, siswa dari SMKN 5 Malang, kelas 11 RPL 1.</p>
+                <p class="card-text">Saya memiliki minat besar dalam pengembangan perangkat lunak dan ingin menjadi seorang full-stack developer.</p>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#FFFFFF" fill-opacity="1" d="M0,224L15,208C30,192,60,160,90,138.7C120,117,150,107,180,96C210,85,240,75,270,58.7C300,43,330,21,360,58.7C390,96,420,192,450,240C480,288,510,288,540,256C570,224,600,160,630,117.3C660,75,690,53,720,74.7C750,96,780,160,810,202.7C840,245,870,267,900,245.3C930,224,960,160,990,144C1020,128,1050,160,1080,181.3C1110,203,1140,213,1170,229.3C1200,245,1230,267,1260,245.3C1290,224,1320,160,1350,144C1380,128,1410,160,1425,176L1440,192L1440,320L1425,320C1410,320,1380,320,1350,320C1320,320,1290,320,1260,320C1230,320,1200,320,1170,320C1140,320,1110,320,1080,320C1050,320,1020,320,990,320C960,320,930,320,900,320C870,320,840,320,810,320C780,320,750,320,720,320C690,320,660,320,630,320C600,320,570,320,540,320C510,320,480,320,450,320C420,320,390,320,360,320C330,320,300,320,270,320C240,320,210,320,180,320C150,320,120,320,90,320C60,320,30,320,15,320L0,320Z"></path>
+      </svg>
+    </section>
+    <!-- Akhir About -->
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="container">
+        <div class="row text-center mb-5">
+          <div class="col">
+            <h2 class="fw-bold">My Projects</h2>
+            <hr class="w-25 mx-auto">
+            <p class="lead">Pelajari Data Science dan Programming dengan konten dari Kaggle</p>
+          </div>
+        </div>
+        <div class="row justify-content-center g-4">
+          <div class="col-md-5" data-aos="fade-up" data-aos-duration="1000">
+            <div class="card">
+              <div class="card-body text-center py-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                <h1 style="font-size: 4rem; margin: 0;">🐍</h1>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Python</h5>
+                <p class="card-text">Pelajari bahasa pemrograman Python yang paling penting untuk data science. Dari dasar hingga penggunaan library eksternal.</p>
+                <p><small class="text-muted">⏱️ 5 jam | Level: Pemula | Gratis</small></p>
+                <a href="python.html" class="btn btn-primary w-100">Mulai Belajar</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <div class="card">
+              <div class="card-body text-center py-5" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;">
+                <h1 style="font-size: 4rem; margin: 0;">🗄️</h1>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Intro to SQL</h5>
+                <p class="card-text">Belajar SQL untuk bekerja dengan database menggunakan Google BigQuery. Dari SELECT hingga JOIN.</p>
+                <p><small class="text-muted">⏱️ 3 jam | Level: Pemula | Gratis</small></p>
+                <a href="sql.html" class="btn btn-primary w-100">Mulai Belajar</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <div class="card">
+              <div class="card-body text-center py-5" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white;">
+                <h1 style="font-size: 4rem; margin: 0;">🎨</h1>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Portobatik</h5>
+                <p class="card-text">Jelajahi koleksi batik tradisional Indonesia dengan desain modern dan inovatif. Temukan karya seni tekstil yang menakjubkan.</p>
+                <p><small class="text-muted">⏱️ Proyek | Level: Menengah | Gratis</small></p>
+                <a href="projects/portobatik/index.html" class="btn btn-primary w-100">Lihat Proyek</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            <div class="card">
+              <div class="card-body text-center py-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                <h1 style="font-size: 4rem; margin: 0;">💻</h1>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">CRUD PHP</h5>
+                <p class="card-text">Pelajari pembuatan aplikasi CRUD (Create, Read, Update, Delete) menggunakan PHP dan Database. Aplikasi full-stack sederhana namun lengkap.</p>
+                <p><small class="text-muted">⏱️ Proyek | Level: Menengah | Gratis</small></p>
+                <a href="projects/crud-php/index.html" class="btn btn-primary w-100">Lihat Proyek</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#f8f9fa" fill-opacity="1" d="M0,256L16,256C32,256,64,256,96,234.7C128,213,160,171,192,154.7C224,139,256,149,288,181.3C320,213,352,267,384,288C416,309,448,299,480,288C512,277,544,267,576,224C608,181,640,107,672,101.3C704,96,736,160,768,186.7C800,213,832,203,864,170.7C896,139,928,85,960,85.3C992,85,1024,139,1056,154.7C1088,171,1120,149,1152,149.3C1184,149,1216,171,1248,197.3C1280,224,1312,256,1344,256C1376,256,1408,224,1424,208L1440,192L1440,320L1424,320C1408,320,1376,320,1344,320C1312,320,1280,320,1248,320C1216,320,1184,320,1152,320C1120,320,1088,320,1056,320C1024,320,992,320,960,320C928,320,896,320,864,320C832,320,800,320,768,320C736,320,704,320,672,320C640,320,608,320,576,320C544,320,512,320,480,320C448,320,416,320,384,320C352,320,320,320,288,320C256,320,224,320,192,320C160,320,128,320,96,320C64,320,32,320,16,320L0,320Z"></path>
+      </svg>
+    </section>
+    <!-- Akhir Projects -->
+
+    <!-- Contact -->
+    <section id="contact" class="bg-light">
+      <div class="container">
+        <div class="row text-center mb-5">
+          <div class="col">
+            <h2 class="fw-bold">Contact Me</h2>
+            <hr class="w-25 mx-auto">
+            <p class="lead">Have questions or want to discuss automotive projects? Get in touch!</p>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6" data-aos="zoom-in" data-aos-duration="1000">
+            <form>
+              <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="subject" class="form-label">Subject</label>
+                <input type="text" class="form-control" id="subject">
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" rows="5" required></textarea>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#6c757d" fill-opacity="1" d="M0,96L48,133.3C96,171,192,245,288,282.7C384,320,480,320,576,272C672,224,768,128,864,80C960,32,1056,32,1152,80C1248,128,1344,224,1392,272L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
+    </section>
+    <!-- Akhir Contact -->
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+            <h5>Radya Erick Febriansyah</h5>
+            <p class="mb-0">Student & Automotive Enthusiast</p>
+          </div>
+          <div class="col-md-6 text-center text-md-end">
+            <a href="https://www.instagram.com/puy4k._?igsh=a2YyMjltMzF5Nnd3" class="text-white me-3"><i class="bi bi-instagram fs-4"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-facebook fs-4"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-twitter-x fs-4"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-linkedin fs-4"></i></a>
+          </div>
+        </div>
+        <hr class="my-3">
+        <div class="text-center">
+          <p class="mb-0">Created with <i class="bi bi-heart-fill text-danger"></i> by Radya Erick &copy; 2024</p>
+        </div>
+      </div>
     </footer>
-</body>
+    <!-- Akhir Footer -->
+
+    <!-- Back to Top Button -->
+    <a href="#" class="btn btn-primary btn-lg back-to-top position-fixed bottom-0 end-0 m-3 rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; display: none;">
+      <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+      // Initialize AOS animation
+      AOS.init({
+        once: true
+      });
+      
+      // Navbar scroll effect
+      window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+      
+      // Back to top button
+      const backToTopButton = document.querySelector('.back-to-top');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+          backToTopButton.style.display = 'flex';
+        } else {
+          backToTopButton.style.display = 'none';
+        }
+      });
+      
+      backToTopButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    </script>
+  </body>
 </html>

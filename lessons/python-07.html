@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bekerja dengan Library Eksternal - Kaggle Learn Indonesia</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="../python.html" class="back-btn">← Kembali ke Python</a>
+            <h1>Bekerja dengan Library Eksternal</h1>
+            <p class="tagline">Pelajaran 7: Menggunakan Library untuk Memperluas Fungsionalitas</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="lesson-content">
+                <h2>📚 Bekerja dengan Library Eksternal - Pelajaran 7</h2>
+
+                <h3>Apa itu Library?</h3>
+                <p>Library (atau module) adalah kumpulan kode yang telah ditulis sebelumnya yang dapat Anda gunakan untuk memperluas fungsionalitas program Anda. Python memiliki banyak library built-in dan dapat mengunduh library tambahan dari internet.</p>
+
+                <h3>Import Library</h3>
+                <p>Untuk menggunakan library, Anda perlu mengimpor (import) terlebih dahulu menggunakan kata kunci <code>import</code>.</p>
+
+                <div class="code-example">
+                    <code>
+# Import seluruh library<br>
+import math<br>
+<br>
+# Import spesifik dari library<br>
+from math import pi, sqrt<br>
+<br>
+# Import dengan alias<br>
+import numpy as np<br>
+                    </code>
+                </div>
+
+                <h3>Library Built-in: Math</h3>
+                <p>Library <code>math</code> menyediakan fungsi-fungsi matematika.</p>
+
+                <div class="code-example">
+                    <code>
+import math<br>
+<br>
+print(math.pi)          # Output: 3.141592653589793<br>
+print(math.sqrt(16))    # Output: 4.0<br>
+print(math.ceil(4.3))   # Output: 5 (pembulatan ke atas)<br>
+print(math.floor(4.9))  # Output: 4 (pembulatan ke bawah)<br>
+print(math.pow(2, 3))   # Output: 8.0<br>
+                    </code>
+                </div>
+
+                <h3>Library Built-in: Random</h3>
+                <p>Library <code>random</code> menyediakan fungsi untuk membuat angka atau memilih elemen secara acak.</p>
+
+                <div class="code-example">
+                    <code>
+import random<br>
+<br>
+# Angka acak antara 0 dan 1<br>
+print(random.random())<br>
+<br>
+# Angka acak bulat<br>
+print(random.randint(1, 10))  # Output: angka acak 1-10<br>
+<br>
+# Memilih elemen acak dari list<br>
+pilihan = random.choice(["merah", "biru", "hijau"])<br>
+print(pilihan)<br>
+<br>
+# Mengacak urutan list<br>
+angka = [1, 2, 3, 4, 5]<br>
+random.shuffle(angka)<br>
+print(angka)  # Urutan berubah secara acak<br>
+                    </code>
+                </div>
+
+                <h3>Library Built-in: Datetime</h3>
+                <p>Library <code>datetime</code> digunakan untuk bekerja dengan tanggal dan waktu.</p>
+
+                <div class="code-example">
+                    <code>
+from datetime import datetime, timedelta<br>
+<br>
+# Tanggal dan waktu sekarang<br>
+sekarang = datetime.now()<br>
+print(sekarang)  # Output: 2025-11-29 12:34:56.789123<br>
+<br>
+# Membuat tanggal tertentu<br>
+tanggal = datetime(2025, 1, 1)<br>
+print(tanggal)  # Output: 2025-01-01 00:00:00<br>
+<br>
+# Menambah hari<br>
+besok = sekarang + timedelta(days=1)<br>
+print(besok)<br>
+<br>
+# Format tanggal<br>
+print(sekarang.strftime("%d-%m-%Y"))  # Output: 29-11-2025<br>
+                    </code>
+                </div>
+
+                <h3>Library PopulerExternal: NumPy</h3>
+                <p><code>NumPy</code> adalah library untuk komputasi numerik dengan array dan matriks. Harus diunduh terlebih dahulu.</p>
+
+                <div class="code-example">
+                    <code>
+import numpy as np<br>
+<br>
+# Membuat array<br>
+arr = np.array([1, 2, 3, 4, 5])<br>
+print(arr)<br>
+<br>
+# Array 2D<br>
+matrix = np.array([[1, 2, 3], [4, 5, 6]])<br>
+print(matrix)<br>
+<br>
+# Operasi array<br>
+print(arr * 2)      # Output: [ 2  4  6  8 10]<br>
+print(arr + arr)    # Output: [ 2  4  6  8 10]<br>
+print(np.sum(arr))  # Output: 15<br>
+print(np.mean(arr)) # Output: 3.0<br>
+                    </code>
+                </div>
+
+                <h3>Library PopulerExternal: Pandas</h3>
+                <p><code>Pandas</code> adalah library untuk analisis dan manipulasi data.</p>
+
+                <div class="code-example">
+                    <code>
+import pandas as pd<br>
+<br>
+# Membuat DataFrame<br>
+data = {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"nama": ["Budi", "Ani", "Citra"],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"umur": [20, 19, 21],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"kota": ["Jakarta", "Bandung", "Surabaya"]<br>
+}<br>
+<br>
+df = pd.DataFrame(data)<br>
+print(df)<br>
+<br>
+# Akses kolom<br>
+print(df["nama"])<br>
+<br>
+# Statistik<br>
+print(df["umur"].mean())<br>
+                    </code>
+                </div>
+
+                <h3>Mengunduh dan Menginstal Library</h3>
+                <p>Untuk mengunduh library dari internet, gunakan <code>pip</code> (Python Package Manager).</p>
+
+                <div class="code-example">
+                    <code>
+# Di command line / terminal:<br>
+pip install numpy<br>
+pip install pandas<br>
+pip install requests<br>
+<br>
+# Mengecek versi yang terinstal<br>
+pip show numpy<br>
+                    </code>
+                </div>
+
+                <h3>Library PopulerExternal: Requests</h3>
+                <p><code>Requests</code> adalah library untuk membuat HTTP requests (mengambil data dari internet).</p>
+
+                <div class="code-example">
+                    <code>
+import requests<br>
+<br>
+# Mengambil data dari URL<br>
+response = requests.get("https://api.example.com/data")<br>
+print(response.status_code)  # 200 artinya berhasil<br>
+print(response.json())       # Parse JSON response<br>
+                    </code>
+                </div>
+
+                <h3>Membuat Module Sendiri</h3>
+                <p>Anda juga dapat membuat module/library sendiri.</p>
+
+                <div class="code-example">
+                    <code>
+# File: kalkulator.py<br>
+def tambah(a, b):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return a + b<br>
+<br>
+def kurang(a, b):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return a - b<br>
+<br>
+# File: main.py<br>
+import kalkulator<br>
+<br>
+print(kalkulator.tambah(5, 3))   # Output: 8<br>
+print(kalkulator.kurang(5, 3))   # Output: 2<br>
+                    </code>
+                </div>
+
+                <h3>Try-Except untuk Error Handling</h3>
+                <p>Ketika menggunakan library, mungkin terjadi error. Gunakan try-except untuk menangani error.</p>
+
+                <div class="code-example">
+                    <code>
+try:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;import non_existent_library<br>
+except ImportError:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print("Library tidak ditemukan")<br>
+<br>
+try:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;result = 10 / 0<br>
+except ZeroDivisionError:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print("Tidak dapat membagi dengan 0")<br>
+except Exception as e:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print(f"Error terjadi: {e}")<br>
+                    </code>
+                </div>
+
+                <div class="tip">
+                    <strong>💡 Tips:</strong>
+                    <p>Ada ribuan library Python yang tersedia di PyPI (Python Package Index). Sebelum menulis kode kompleks, cek apakah sudah ada library yang dapat membantu. Selalu baca dokumentasi library untuk memahami cara penggunaannya.</p>
+                </div>
+
+                <h3>Ringkasan Pelajaran</h3>
+                <ul>
+                    <li>Library adalah kumpulan kode yang dapat digunakan kembali</li>
+                    <li>Import library menggunakan kata kunci <code>import</code></li>
+                    <li>Python memiliki banyak library built-in</li>
+                    <li>Library eksternal dapat diunduh dengan pip</li>
+                    <li>NumPy, Pandas, Requests adalah library populer</li>
+                    <li>Anda dapat membuat module/library sendiri</li>
+                    <li>Try-except digunakan untuk menangani error</li>
+                    <li>Selalu baca dokumentasi sebelum menggunakan library</li>
+                </ul>
+
+                <div class="navigation">
+                    <a href="python-06.html" class="btn">← Pelajaran Sebelumnya</a>
+                    <a href="../python.html" class="btn">← Kembali ke Python</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kaggle Learn Indonesia</p>
+        </div>
+    </footer>
+</body>
+</html>

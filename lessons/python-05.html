@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop dan List Comprehension - Kaggle Learn Indonesia</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="../python.html" class="back-btn">← Kembali ke Python</a>
+            <h1>Loop dan List Comprehension</h1>
+            <p class="tagline">Pelajaran 5: Perulangan dan Teknik Membuat List</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="lesson-content">
+                <h2>📚 Loop dan List Comprehension - Pelajaran 5</h2>
+
+                <h3>Apa itu Loop?</h3>
+                <p>Loop (perulangan) digunakan untuk menjalankan blok kode berulang kali. Ada dua jenis loop dalam Python: <code>for</code> dan <code>while</code>.</p>
+
+                <h3>For Loop</h3>
+                <p>For loop digunakan untuk mengulangi blok kode untuk setiap elemen dalam urutan (seperti list, string, atau range).</p>
+
+                <div class="code-example">
+                    <code>
+# Loop melalui list<br>
+buah = ["apel", "mangga", "jeruk"]<br>
+for buah_item in buah:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print(buah_item)<br>
+<br>
+# Output:<br>
+# apel<br>
+# mangga<br>
+# jeruk<br>
+                    </code>
+                </div>
+
+                <h3>Range Function</h3>
+                <p>Fungsi <code>range()</code> menghasilkan urutan angka. Range sangat berguna dalam for loop.</p>
+
+                <div class="code-example">
+                    <code>
+# Range dari 0 sampai 4 (tidak termasuk 5)<br>
+for i in range(5):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print(i)<br>
+<br>
+# Output: 0, 1, 2, 3, 4<br>
+<br>
+# Range dari 2 sampai 8 dengan step 2<br>
+for i in range(2, 8, 2):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print(i)<br>
+<br>
+# Output: 2, 4, 6<br>
+                    </code>
+                </div>
+
+                <h3>Enumerate Function</h3>
+                <p>Gunakan <code>enumerate()</code> jika Anda membutuhkan indeks dan elemen sekaligus.</p>
+
+                <div class="code-example">
+                    <code>
+buah = ["apel", "mangga", "jeruk"]<br>
+<br>
+for indeks, buah_item in enumerate(buah):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print(indeks, buah_item)<br>
+<br>
+# Output:<br>
+# 0 apel<br>
+# 1 mangga<br>
+# 2 jeruk<br>
+                    </code>
+                </div>
+
+                <h3>While Loop</h3>
+                <p>While loop menjalankan blok kode selama kondisi bernilai True.</p>
+
+                <div class="code-example">
+                    <code>
+i = 0<br>
+while i < 5:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print(i)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;i = i + 1<br>
+<br>
+# Output: 0, 1, 2, 3, 4<br>
+                    </code>
+                </div>
+
+                <h3>Break dan Continue</h3>
+                <p><code>break</code> menghentikan loop, sementara <code>continue</code> melewati iterasi saat ini dan melanjutkan ke iterasi berikutnya.</p>
+
+                <div class="code-example">
+                    <code>
+# Menggunakan break<br>
+for i in range(10):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if i == 5:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break  # Keluar dari loop<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print(i)<br>
+<br>
+# Output: 0, 1, 2, 3, 4<br>
+<br>
+# Menggunakan continue<br>
+for i in range(5):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if i == 2:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue  # Lewati 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print(i)<br>
+<br>
+# Output: 0, 1, 3, 4<br>
+                    </code>
+                </div>
+
+                <h3>List Comprehension</h3>
+                <p>List comprehension adalah cara ringkas untuk membuat list baru. Ini menggabungkan for loop dan list creation dalam satu baris.</p>
+
+                <div class="code-example">
+                    <code>
+# Membuat list kuadrat dari 1-5<br>
+kuadrat = [x**2 for x in range(1, 6)]<br>
+print(kuadrat)  # Output: [1, 4, 9, 16, 25]<br>
+<br>
+# Dengan kondisi if<br>
+angka_genap = [x for x in range(10) if x % 2 == 0]<br>
+print(angka_genap)  # Output: [0, 2, 4, 6, 8]<br>
+<br>
+# Dari list yang sudah ada<br>
+buah = ["apel", "mangga", "jeruk"]<br>
+buah_besar = [b.upper() for b in buah]<br>
+print(buah_besar)  # Output: ['APEL', 'MANGGA', 'JERUK']<br>
+                    </code>
+                </div>
+
+                <h3>Nested Loop</h3>
+                <p>Anda dapat menempatkan loop di dalam loop lain untuk membuat perulangan bersarang.</p>
+
+                <div class="code-example">
+                    <code>
+# Membuat tabel perkalian<br>
+for i in range(1, 4):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j in range(1, 4):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f"{i} x {j} = {i*j}")<br>
+<br>
+# Output:<br>
+# 1 x 1 = 1<br>
+# 1 x 2 = 2<br>
+# ... dan seterusnya<br>
+                    </code>
+                </div>
+
+                <h3>For-Else dan While-Else</h3>
+                <p>Blok <code>else</code> dalam loop akan dijalankan jika loop selesai dengan normal (tidak menggunakan break).</p>
+
+                <div class="code-example">
+                    <code>
+for i in range(5):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print(i)<br>
+else:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print("Loop selesai!")<br>
+<br>
+# Output:<br>
+# 0<br>
+# 1<br>
+# 2<br>
+# 3<br>
+# 4<br>
+# Loop selesai!<br>
+                    </code>
+                </div>
+
+                <div class="tip">
+                    <strong>💡 Tips:</strong>
+                    <p>List comprehension lebih cepat dan lebih Pythonic daripada menggunakan loop untuk membuat list. Gunakan list comprehension ketika memungkinkan untuk membuat kode lebih efisien dan mudah dibaca.</p>
+                </div>
+
+                <h3>Ringkasan Pelajaran</h3>
+                <ul>
+                    <li>For loop digunakan untuk perulangan dengan jumlah iterasi yang diketahui</li>
+                    <li>While loop digunakan untuk perulangan dengan kondisi</li>
+                    <li>Break menghentikan loop, continue melewati iterasi</li>
+                    <li>range() menghasilkan urutan angka</li>
+                    <li>enumerate() memberikan indeks dan elemen</li>
+                    <li>List comprehension adalah cara ringkas membuat list</li>
+                    <li>Nested loop memungkinkan perulangan bersarang</li>
+                </ul>
+
+                <div class="navigation">
+                    <a href="python-04.html" class="btn">← Pelajaran Sebelumnya</a>
+                    <a href="python-06.html" class="btn">Pelajaran Selanjutnya →</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kaggle Learn Indonesia</p>
+        </div>
+    </footer>
+</body>
+</html>

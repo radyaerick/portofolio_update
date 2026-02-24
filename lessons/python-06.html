@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String dan Dictionary - Kaggle Learn Indonesia</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="../python.html" class="back-btn">← Kembali ke Python</a>
+            <h1>String dan Dictionary</h1>
+            <p class="tagline">Pelajaran 6: Bekerja dengan Teks dan Data Terstruktur</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="lesson-content">
+                <h2>📚 String dan Dictionary - Pelajaran 6</h2>
+
+                <h3>Apa itu String?</h3>
+                <p>String adalah tipe data yang mewakili teks. String dapat dibuat menggunakan tanda kutip tunggal (<code>'</code>) atau tanda kutip ganda (<code>"</code>).</p>
+
+                <div class="code-example">
+                    <code>
+nama = "Budi"<br>
+pesan = 'Halo, dunia!'<br>
+multiline = """Ini adalah<br>
+string yang<br>
+memiliki banyak baris"""<br>
+                    </code>
+                </div>
+
+                <h3>Operasi pada String</h3>
+                <p>String dapat dioperasikan dengan berbagai cara di Python.</p>
+
+                <div class="code-example">
+                    <code>
+# Penggabungan (concatenation)<br>
+nama_depan = "Budi"<br>
+nama_belakang = "Santoso"<br>
+nama_lengkap = nama_depan + " " + nama_belakang<br>
+print(nama_lengkap)  # Output: Budi Santoso<br>
+<br>
+# Pengulangan<br>
+print("Ha" * 3)  # Output: HaHaHa<br>
+<br>
+# Panjang string<br>
+print(len("Budi"))  # Output: 4<br>
+                    </code>
+                </div>
+
+                <h3>Indexing dan Slicing String</h3>
+                <p>String dapat diakses seperti list menggunakan indeks dan slicing.</p>
+
+                <div class="code-example">
+                    <code>
+text = "Python"<br>
+print(text[0])    # Output: P (karakter pertama)<br>
+print(text[2])    # Output: t<br>
+print(text[-1])   # Output: n (karakter terakhir)<br>
+print(text[1:4])  # Output: yth<br>
+print(text[:3])   # Output: Pyt<br>
+                    </code>
+                </div>
+
+                <h3>String Methods (Metode String)</h3>
+                <p>Python menyediakan banyak metode untuk memanipulasi string.</p>
+
+                <div class="code-example">
+                    <code>
+text = "  Halo Dunia  "<br>
+<br>
+# Upper dan Lower<br>
+print(text.upper())      # Output: HALO DUNIA<br>
+print(text.lower())      # Output: halo dunia<br>
+<br>
+# Strip (menghapus spasi di awal dan akhir)<br>
+print(text.strip())      # Output: Halo Dunia<br>
+<br>
+# Replace (mengganti)<br>
+print(text.replace("Dunia", "Python"))  # Output: Halo Python<br>
+<br>
+# Split (memisahkan)<br>
+kata = "Budi Santoso Wijaya".split()<br>
+print(kata)  # Output: ['Budi', 'Santoso', 'Wijaya']<br>
+<br>
+# Join (menggabungkan)<br>
+hasil = ", ".join(kata)<br>
+print(hasil)  # Output: Budi, Santoso, Wijaya<br>
+<br>
+# Find (mencari)<br>
+print(text.find("Dunia"))  # Output: 7<br>
+<br>
+# Startswith dan Endswith<br>
+print("Python".startswith("Py"))   # Output: True<br>
+print("Python".endswith("on"))     # Output: True<br>
+                    </code>
+                </div>
+
+                <h3>String Formatting</h3>
+                <p>Ada beberapa cara untuk memformat string di Python.</p>
+
+                <div class="code-example">
+                    <code>
+nama = "Budi"<br>
+umur = 25<br>
+<br>
+# Menggunakan % (cara lama)<br>
+print("Nama saya %s dan umur %d" % (nama, umur))<br>
+<br>
+# Menggunakan .format()<br>
+print("Nama saya {} dan umur {}".format(nama, umur))<br>
+<br>
+# Menggunakan f-string (cara modern)<br>
+print(f"Nama saya {nama} dan umur {umur}")<br>
+<br>
+# Dengan ekspresi di f-string<br>
+nilai = 85<br>
+print(f"Nilai saya adalah {nilai} dan grade saya adalah {'A' if nilai >= 90 else 'B'}")<br>
+                    </code>
+                </div>
+
+                <h3>Apa itu Dictionary?</h3>
+                <p>Dictionary adalah koleksi data yang tidak terurut, dapat diubah, dan dipasangkan antara key (kunci) dan value (nilai). Dictionary ditulis dengan kurung kurawal <code>{}</code>.</p>
+
+                <div class="code-example">
+                    <code>
+# Membuat dictionary<br>
+siswa = {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"nama": "Budi",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"umur": 20,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"kota": "Jakarta"<br>
+}<br>
+<br>
+# Dictionary kosong<br>
+data = {}<br>
+                    </code>
+                </div>
+
+                <h3>Mengakses Elemen Dictionary</h3>
+                <p>Akses elemen dictionary menggunakan key, bukan indeks.</p>
+
+                <div class="code-example">
+                    <code>
+siswa = {"nama": "Budi", "umur": 20, "kota": "Jakarta"}<br>
+<br>
+print(siswa["nama"])     # Output: Budi<br>
+print(siswa["umur"])     # Output: 20<br>
+print(siswa.get("kota")) # Output: Jakarta<br>
+<br>
+# Menggunakan get() dengan default value<br>
+print(siswa.get("provinsi", "Tidak ada"))  # Output: Tidak ada<br>
+                    </code>
+                </div>
+
+                <h3>Mengubah dan Menambah Elemen</h3>
+                <p>Anda dapat mengubah atau menambah elemen dalam dictionary.</p>
+
+                <div class="code-example">
+                    <code>
+siswa = {"nama": "Budi", "umur": 20}<br>
+<br>
+# Mengubah nilai<br>
+siswa["umur"] = 21<br>
+<br>
+# Menambah elemen baru<br>
+siswa["kota"] = "Jakarta"<br>
+<br>
+print(siswa)  # Output: {'nama': 'Budi', 'umur': 21, 'kota': 'Jakarta'}<br>
+                    </code>
+                </div>
+
+                <h3>Menghapus Elemen</h3>
+                <p>Gunakan <code>del</code> atau metode <code>pop()</code> untuk menghapus elemen.</p>
+
+                <div class="code-example">
+                    <code>
+siswa = {"nama": "Budi", "umur": 20, "kota": "Jakarta"}<br>
+<br>
+# Menggunakan del<br>
+del siswa["kota"]<br>
+<br>
+# Menggunakan pop()<br>
+umur = siswa.pop("umur")<br>
+<br>
+print(siswa)  # Output: {'nama': 'Budi'}<br>
+                    </code>
+                </div>
+
+                <h3>Loop dalam Dictionary</h3>
+                <p>Anda dapat melakukan loop untuk mengakses semua elemen dalam dictionary.</p>
+
+                <div class="code-example">
+                    <code>
+siswa = {"nama": "Budi", "umur": 20, "kota": "Jakarta"}<br>
+<br>
+# Loop keys<br>
+for key in siswa:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print(key)<br>
+<br>
+# Loop values<br>
+for value in siswa.values():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print(value)<br>
+<br>
+# Loop key dan value<br>
+for key, value in siswa.items():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print(f"{key}: {value}")<br>
+                    </code>
+                </div>
+
+                <h3>Dictionary Methods</h3>
+                <p>Dictionary memiliki beberapa metode yang berguna.</p>
+
+                <div class="code-example">
+                    <code>
+siswa = {"nama": "Budi", "umur": 20}<br>
+<br>
+# Keys<br>
+print(siswa.keys())      # Output: dict_keys(['nama', 'umur'])<br>
+<br>
+# Values<br>
+print(siswa.values())    # Output: dict_values(['Budi', 20])<br>
+<br>
+# Items<br>
+print(siswa.items())     # Output: dict_items([('nama', 'Budi'), ('umur', 20)])<br>
+<br>
+# Update<br>
+siswa.update({"kota": "Jakarta"})<br>
+<br>
+# Clear (menghapus semua)<br>
+siswa.clear()<br>
+print(siswa)  # Output: {}<br>
+                    </code>
+                </div>
+
+                <h3>Nested Dictionary</h3>
+                <p>Dictionary dapat berisi dictionary lain di dalamnya.</p>
+
+                <div class="code-example">
+                    <code>
+kelas = {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"siswa1": {"nama": "Budi", "umur": 20},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"siswa2": {"nama": "Ani", "umur": 19}<br>
+}<br>
+<br>
+print(kelas["siswa1"]["nama"])  # Output: Budi<br>
+                    </code>
+                </div>
+
+                <div class="tip">
+                    <strong>💡 Tips:</strong>
+                    <p>String adalah immutable (tidak dapat diubah), tetapi dictionary adalah mutable (dapat diubah). Gunakan f-string untuk string formatting yang modern dan mudah dibaca.</p>
+                </div>
+
+                <h3>Ringkasan Pelajaran</h3>
+                <ul>
+                    <li>String adalah tipe data yang mewakili teks</li>
+                    <li>String dapat diakses dengan indexing dan slicing</li>
+                    <li>Ada banyak metode string untuk memanipulasi teks</li>
+                    <li>String formatting dapat dilakukan dengan %, .format(), atau f-string</li>
+                    <li>Dictionary menyimpan pasangan key-value</li>
+                    <li>Dictionary dapat diakses, diubah, dan dihapus dengan mudah</li>
+                    <li>Dictionary dapat di-loop untuk mengakses semua elemen</li>
+                </ul>
+
+                <div class="navigation">
+                    <a href="python-05.html" class="btn">← Pelajaran Sebelumnya</a>
+                    <a href="python-07.html" class="btn">Pelajaran Selanjutnya →</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kaggle Learn Indonesia</p>
+        </div>
+    </footer>
+</body>
+</html>

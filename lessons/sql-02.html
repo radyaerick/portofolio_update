@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select, From & Where - Kaggle Learn Indonesia</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="../sql.html" class="back-btn">← Kembali ke SQL</a>
+            <h1>Select, From & Where</h1>
+            <p class="tagline">Pelajaran 2: Tiga Perintah Dasar SQL</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="lesson-content">
+                <h2>📚 Select, From & Where - Pelajaran 2</h2>
+
+                <h3>Perintah SELECT</h3>
+                <p>Perintah SELECT digunakan untuk memilih kolom-kolom mana saja yang ingin Anda tampilkan dari database.</p>
+
+                <div class="code-example">
+                    <code>
+-- Memilih semua kolom<br>
+SELECT * FROM siswa;<br>
+<br>
+-- Memilih kolom tertentu<br>
+SELECT nama, umur FROM siswa;<br>
+<br>
+-- Memilih satu kolom<br>
+SELECT nama FROM siswa;<br>
+                    </code>
+                </div>
+
+                <h3>Perintah FROM</h3>
+                <p>Perintah FROM menentukan tabel mana yang ingin Anda ambil data. Setiap query harus menentukan sumber data dengan FROM.</p>
+
+                <div class="code-example">
+                    <code>
+-- Mengambil dari tabel siswa<br>
+SELECT * FROM siswa;<br>
+<br>
+-- Mengambil dari tabel dengan nama spesifik (dataset.tabel)<br>
+SELECT * FROM `project.dataset.siswa`;<br>
+                    </code>
+                </div>
+
+                <h3>Perintah WHERE</h3>
+                <p>Perintah WHERE digunakan untuk memfilter data berdasarkan kondisi tertentu. Hanya baris yang memenuhi kondisi yang akan ditampilkan.</p>
+
+                <div class="code-example">
+                    <code>
+-- Mengambil siswa dengan umur lebih dari 20<br>
+SELECT nama, umur FROM siswa WHERE umur > 20;<br>
+<br>
+-- Mengambil siswa dari kota Jakarta<br>
+SELECT * FROM siswa WHERE kota = 'Jakarta';<br>
+<br>
+-- Mengambil siswa dengan umur sama dengan 20<br>
+SELECT * FROM siswa WHERE umur = 20;<br>
+                    </code>
+                </div>
+
+                <h3>Operator Perbandingan dalam WHERE</h3>
+                <p>Ada berbagai operator yang dapat digunakan dalam klausa WHERE:</p>
+
+                <ul>
+                    <li><code>=</code> - Sama dengan</li>
+                    <li><code>!=</code> atau <code>&lt;&gt;</code> - Tidak sama dengan</li>
+                    <li><code>&gt;</code> - Lebih besar dari</li>
+                    <li><code>&lt;</code> - Lebih kecil dari</li>
+                    <li><code>&gt;=</code> - Lebih besar atau sama dengan</li>
+                    <li><code>&lt;=</code> - Lebih kecil atau sama dengan</li>
+                </ul>
+
+                <div class="code-example">
+                    <code>
+-- Umur tidak sama dengan 20<br>
+SELECT * FROM siswa WHERE umur != 20;<br>
+<br>
+-- Umur lebih besar atau sama dengan 20<br>
+SELECT * FROM siswa WHERE umur >= 20;<br>
+<br>
+-- Umur kurang dari 21<br>
+SELECT * FROM siswa WHERE umur < 21;<br>
+                    </code>
+                </div>
+
+                <h3>Operator Logika: AND, OR, NOT</h3>
+                <p>Operator logika digunakan untuk menggabungkan beberapa kondisi.</p>
+
+                <div class="code-example">
+                    <code>
+-- AND: Kedua kondisi harus benar<br>
+SELECT * FROM siswa WHERE umur > 19 AND kota = 'Jakarta';<br>
+<br>
+-- OR: Salah satu kondisi harus benar<br>
+SELECT * FROM siswa WHERE kota = 'Jakarta' OR kota = 'Bandung';<br>
+<br>
+-- NOT: Kondisi harus salah<br>
+SELECT * FROM siswa WHERE NOT kota = 'Jakarta';<br>
+                    </code>
+                </div>
+
+                <h3>Operator IN</h3>
+                <p>Operator IN digunakan untuk mencocokkan nilai dalam daftar.</p>
+
+                <div class="code-example">
+                    <code>
+-- Siswa dari Jakarta, Bandung, atau Surabaya<br>
+SELECT * FROM siswa<br>
+WHERE kota IN ('Jakarta', 'Bandung', 'Surabaya');<br>
+<br>
+-- Siswa dengan umur 19 atau 21<br>
+SELECT * FROM siswa WHERE umur IN (19, 21);<br>
+                    </code>
+                </div>
+
+                <h3>Operator BETWEEN</h3>
+                <p>Operator BETWEEN digunakan untuk memilih nilai dalam rentang tertentu.</p>
+
+                <div class="code-example">
+                    <code>
+-- Siswa dengan umur antara 19 dan 21<br>
+SELECT * FROM siswa WHERE umur BETWEEN 19 AND 21;<br>
+<br>
+-- Ini sama dengan:<br>
+SELECT * FROM siswa WHERE umur >= 19 AND umur <= 21;<br>
+                    </code>
+                </div>
+
+                <h3>Operator LIKE</h3>
+                <p>Operator LIKE digunakan untuk mencari pola dalam string.</p>
+
+                <div class="code-example">
+                    <code>
+-- Nama yang dimulai dengan 'B'<br>
+SELECT * FROM siswa WHERE nama LIKE 'B%';<br>
+<br>
+-- Nama yang berakhir dengan 'i'<br>
+SELECT * FROM siswa WHERE nama LIKE '%i';<br>
+<br>
+-- Nama yang mengandung 'ud'<br>
+SELECT * FROM siswa WHERE nama LIKE '%ud%';<br>
+<br>
+-- Nama dengan panjang 3 karakter<br>
+SELECT * FROM siswa WHERE nama LIKE '___';<br>
+                    </code>
+                </div>
+
+                <h3>Operator NULL</h3>
+                <p>NULL adalah nilai khusus yang menandakan tidak ada data. Gunakan IS NULL atau IS NOT NULL untuk memeriksa NULL.</p>
+
+                <div class="code-example">
+                    <code>
+-- Data yang tidak memiliki nilai kota<br>
+SELECT * FROM siswa WHERE kota IS NULL;<br>
+<br>
+-- Data yang memiliki nilai kota<br>
+SELECT * FROM siswa WHERE kota IS NOT NULL;<br>
+                    </code>
+                </div>
+
+                <h3>Kombinasi SELECT, FROM, dan WHERE</h3>
+                <p>Berikut adalah contoh query yang menggabungkan ketiga perintah:</p>
+
+                <div class="code-example">
+                    <code>
+-- Ambil nama dan umur dari siswa yang berumur lebih dari 19 tahun<br>
+SELECT nama, umur<br>
+FROM siswa<br>
+WHERE umur > 19;<br>
+<br>
+-- Ambil semua data siswa dari Jakarta atau Bandung<br>
+SELECT *<br>
+FROM siswa<br>
+WHERE kota IN ('Jakarta', 'Bandung');<br>
+<br>
+-- Ambil nama dan kota dari siswa dengan umur antara 19 dan 21<br>
+SELECT nama, kota<br>
+FROM siswa<br>
+WHERE umur BETWEEN 19 AND 21<br>
+  AND kota IS NOT NULL;<br>
+                    </code>
+                </div>
+
+                <div class="tip">
+                    <strong>💡 Tips:</strong>
+                    <p>Klausa WHERE sangat penting untuk memfilter data. Gunakan kondisi yang tepat untuk mendapatkan data yang Anda butuhkan. Jangan lupa menggunakan tanda kutip tunggal untuk string dalam WHERE.</p>
+                </div>
+
+                <h3>Ringkasan Pelajaran</h3>
+                <ul>
+                    <li>SELECT memilih kolom yang ingin ditampilkan</li>
+                    <li>FROM menentukan tabel sumber data</li>
+                    <li>WHERE memfilter baris berdasarkan kondisi</li>
+                    <li>Operator perbandingan: =, !=, >, <, >=, <=</li>
+                    <li>Operator logika: AND, OR, NOT</li>
+                    <li>Operator khusus: IN, BETWEEN, LIKE, IS NULL</li>
+                    <li>Kombinasi SELECT, FROM, WHERE membuat query yang powerful</li>
+                </ul>
+
+                <div class="navigation">
+                    <a href="sql-01.html" class="btn">← Pelajaran Sebelumnya</a>
+                    <a href="sql-03.html" class="btn">Pelajaran Selanjutnya →</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kaggle Learn Indonesia</p>
+        </div>
+    </footer>
+</body>
+</html>

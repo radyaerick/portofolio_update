@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memulai dengan SQL dan BigQuery - Kaggle Learn Indonesia</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="../sql.html" class="back-btn">← Kembali ke SQL</a>
+            <h1>Memulai dengan SQL dan BigQuery</h1>
+            <p class="tagline">Pelajaran 1: Pengenalan SQL dan Google BigQuery</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="lesson-content">
+                <h2>📚 Memulai dengan SQL dan BigQuery - Pelajaran 1</h2>
+
+                <h3>Apa itu SQL?</h3>
+                <p>SQL (Structured Query Language) adalah bahasa pemrograman yang dirancang khusus untuk mengelola dan mengambil data dari database. SQL memungkinkan Anda untuk membuat, membaca, memperbarui, dan menghapus data dalam database dengan cara yang efisien.</p>
+
+                <h3>Apa itu Database?</h3>
+                <p>Database adalah kumpulan data yang terorganisir dalam bentuk tabel. Setiap tabel terdiri dari baris (records) dan kolom (fields). Database digunakan untuk menyimpan informasi dalam jumlah besar dengan cara yang terstruktur dan mudah diakses.</p>
+
+                <h3>Apa itu BigQuery?</h3>
+                <p>Google BigQuery adalah layanan cloud computing dari Google yang memungkinkan Anda menganalisis data dalam skala besar dengan cepat. BigQuery menyimpan data dalam tabel dan memungkinkan Anda menggunakan SQL untuk menganalisisnya. BigQuery sangat cocok untuk analisis data besar (big data).</p>
+
+                <h3>Struktur Database</h3>
+                <p>Database terdiri dari satu atau lebih tabel. Setiap tabel memiliki struktur berikut:</p>
+
+                <div class="code-example">
+                    <code>
+Tabel: siswa<br>
+---------------------------------<br>
+| id | nama    | umur | kota      |<br>
+---------------------------------<br>
+| 1  | Budi    | 20   | Jakarta   |<br>
+| 2  | Ani     | 19   | Bandung   |<br>
+| 3  | Citra   | 21   | Surabaya  |<br>
+---------------------------------<br>
+<br>
+Kolom: id, nama, umur, kota<br>
+Baris: data setiap siswa<br>
+                    </code>
+                </div>
+
+                <h3>Tipe Data dalam SQL</h3>
+                <p>Database mendukung berbagai tipe data:</p>
+
+                <ul>
+                    <li><strong>INTEGER</strong> - Bilangan bulat (1, 100, -50)</li>
+                    <li><strong>VARCHAR/STRING</strong> - Teks (nama, alamat)</li>
+                    <li><strong>DATE</strong> - Tanggal (2025-01-15)</li>
+                    <li><strong>FLOAT/DECIMAL</strong> - Bilangan desimal (3.14, 100.50)</li>
+                    <li><strong>BOOLEAN</strong> - True atau False</li>
+                </ul>
+
+                <h3>Struktur Query SQL</h3>
+                <p>Query SQL memiliki struktur dasar yang disebut SELECT statement. Ini adalah query paling dasar untuk mengambil data dari database.</p>
+
+                <div class="code-example">
+                    <code>
+SELECT nama, umur<br>
+FROM siswa<br>
+WHERE umur > 20<br>
+ORDER BY nama;<br>
+                    </code>
+                </div>
+
+                <h3>Menggunakan BigQuery</h3>
+                <p>Untuk menggunakan BigQuery:</p>
+
+                <ol>
+                    <li>Buka https://console.cloud.google.com/</li>
+                    <li>Buat project baru atau pilih project yang sudah ada</li>
+                    <li>Aktifkan BigQuery API</li>
+                    <li>Buka BigQuery console</li>
+                    <li>Tulis query SQL di editor</li>
+                    <li>Klik "Run" untuk menjalankan query</li>
+                </ol>
+
+                <h3>Datasets Publik BigQuery</h3>
+                <p>BigQuery menyediakan dataset publik yang dapat Anda gunakan untuk belajar. Beberapa dataset populer:</p>
+
+                <ul>
+                    <li><strong>bigquery-public-data:world_bank_intl_debt</strong> - Data utang internasional</li>
+                    <li><strong>bigquery-public-data:hacker_news</strong> - Data Hacker News</li>
+                    <li><strong>bigquery-public-data:github_repos</strong> - Data repository GitHub</li>
+                    <li><strong>bigquery-public-data:wikipedia</strong> - Data Wikipedia</li>
+                </ul>
+
+                <h3>Query Pertama Anda</h3>
+                <p>Mari coba query pertama dengan dataset publik:</p>
+
+                <div class="code-example">
+                    <code>
+SELECT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;COUNT(*) as total_records<br>
+FROM<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`bigquery-public-data.hacker_news.stories`<br>
+LIMIT 10;<br>
+                    </code>
+                </div>
+
+                <p>Query di atas akan menghitung jumlah total records dalam tabel stories dataset Hacker News.</p>
+
+                <h3>Dasar-dasar Syntax SQL</h3>
+                <p>Beberapa hal penting dalam syntax SQL:</p>
+
+                <ul>
+                    <li>SQL tidak case-sensitive (SELECT = select), tetapi case-sensitive untuk string</li>
+                    <li>Setiap statement SQL berakhir dengan semicolon (<code>;</code>)</li>
+                    <li>String harus diapit oleh tanda kutip tunggal ('nilai')</li>
+                    <li>Whitespace (spasi, tab, newline) diabaikan dalam SQL</li>
+                    <li>Komentar dapat ditambahkan dengan -- atau /* */</li>
+                </ul>
+
+                <div class="code-example">
+                    <code>
+-- Ini adalah komentar baris tunggal<br>
+SELECT nama FROM siswa;  /* Ini adalah<br>
+komentar multi-baris */
+                    </code>
+                </div>
+
+                <div class="tip">
+                    <strong>💡 Tips:</strong>
+                    <p>Untuk belajar SQL, gunakan dataset publik BigQuery. Mulai dengan query sederhana dan tingkatkan kompleksitasnya secara bertahap. Selalu cek dokumentasi BigQuery untuk memahami sintaks yang tepat.</p>
+                </div>
+
+                <h3>Ringkasan Pelajaran</h3>
+                <ul>
+                    <li>SQL adalah bahasa untuk mengelola database</li>
+                    <li>Database terdiri dari tabel dengan baris dan kolom</li>
+                    <li>BigQuery adalah platform cloud untuk analisis data</li>
+                    <li>Query dasar menggunakan SELECT statement</li>
+                    <li>BigQuery menyediakan dataset publik untuk belajar</li>
+                    <li>SQL memiliki syntax yang perlu diikuti dengan baik</li>
+                    <li>Komentar dapat ditambahkan ke query SQL</li>
+                </ul>
+
+                <div class="navigation">
+                    <a href="../sql.html" class="btn">← Kembali</a>
+                    <a href="sql-02.html" class="btn">Pelajaran Selanjutnya →</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kaggle Learn Indonesia</p>
+        </div>
+    </footer>
+</body>
+</html>

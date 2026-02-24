@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group By, Having & Count - Kaggle Learn Indonesia</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="../sql.html" class="back-btn">← Kembali ke SQL</a>
+            <h1>Group By, Having & Count</h1>
+            <p class="tagline">Pelajaran 3: Mengelompokkan Data dan Fungsi Agregat</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="lesson-content">
+                <h2>📚 Group By, Having & Count - Pelajaran 3</h2>
+
+                <h3>Fungsi Agregat</h3>
+                <p>Fungsi agregat melakukan perhitungan pada sekumpulan baris. Fungsi-fungsi ini sangat berguna untuk analisis data.</p>
+
+                <ul>
+                    <li><code>COUNT()</code> - Menghitung jumlah baris</li>
+                    <li><code>SUM()</code> - Menjumlahkan nilai</li>
+                    <li><code>AVG()</code> - Menghitung rata-rata</li>
+                    <li><code>MAX()</code> - Mencari nilai maksimum</li>
+                    <li><code>MIN()</code> - Mencari nilai minimum</li>
+                </ul>
+
+                <h3>Fungsi COUNT()</h3>
+                <p>Fungsi COUNT() menghitung jumlah baris yang memenuhi kriteria.</p>
+
+                <div class="code-example">
+                    <code>
+-- Hitung total siswa<br>
+SELECT COUNT(*) as total_siswa FROM siswa;<br>
+<br>
+-- Hitung siswa dari Jakarta<br>
+SELECT COUNT(*) FROM siswa WHERE kota = 'Jakarta';<br>
+<br>
+-- Hitung siswa dengan kota yang tidak NULL<br>
+SELECT COUNT(kota) FROM siswa;<br>
+                    </code>
+                </div>
+
+                <h3>Fungsi SUM(), AVG(), MAX(), MIN()</h3>
+                <p>Fungsi-fungsi ini melakukan perhitungan pada kolom numerik.</p>
+
+                <div class="code-example">
+                    <code>
+-- Total umur semua siswa<br>
+SELECT SUM(umur) as total_umur FROM siswa;<br>
+<br>
+-- Rata-rata umur siswa<br>
+SELECT AVG(umur) as rata_rata_umur FROM siswa;<br>
+<br>
+-- Umur tertua<br>
+SELECT MAX(umur) as umur_tertua FROM siswa;<br>
+<br>
+-- Umur termuda<br>
+SELECT MIN(umur) as umur_termuda FROM siswa;<br>
+                    </code>
+                </div>
+
+                <h3>Perintah GROUP BY</h3>
+                <p>GROUP BY digunakan untuk mengelompokkan baris dengan nilai yang sama. Biasanya digunakan dengan fungsi agregat untuk melakukan perhitungan per grup.</p>
+
+                <div class="code-example">
+                    <code>
+-- Hitung jumlah siswa per kota<br>
+SELECT kota, COUNT(*) as jumlah_siswa<br>
+FROM siswa<br>
+GROUP BY kota;<br>
+<br>
+-- Output:<br>
+-- kota       | jumlah_siswa<br>
+-- Jakarta    | 2<br>
+-- Bandung    | 1<br>
+-- Surabaya   | 1<br>
+                    </code>
+                </div>
+
+                <h3>GROUP BY dengan Multiple Kolom</h3>
+                <p>Anda dapat mengelompokkan berdasarkan lebih dari satu kolom.</p>
+
+                <div class="code-example">
+                    <code>
+-- Hitung jumlah siswa per kota dan umur<br>
+SELECT kota, umur, COUNT(*) as jumlah<br>
+FROM siswa<br>
+GROUP BY kota, umur;<br>
+                    </code>
+                </div>
+
+                <h3>Perintah HAVING</h3>
+                <p>HAVING digunakan untuk memfilter grup berdasarkan hasil fungsi agregat. Berbeda dengan WHERE yang memfilter baris individual, HAVING memfilter hasil grup.</p>
+
+                <div class="code-example">
+                    <code>
+-- Kota dengan lebih dari 1 siswa<br>
+SELECT kota, COUNT(*) as jumlah_siswa<br>
+FROM siswa<br>
+GROUP BY kota<br>
+HAVING COUNT(*) > 1;<br>
+<br>
+-- Kota dengan rata-rata umur lebih dari 19<br>
+SELECT kota, AVG(umur) as rata_rata_umur<br>
+FROM siswa<br>
+GROUP BY kota<br>
+HAVING AVG(umur) > 19;<br>
+                    </code>
+                </div>
+
+                <h3>Perbedaan WHERE dan HAVING</h3>
+                <p>WHERE dan HAVING memiliki perbedaan penting:</p>
+
+                <ul>
+                    <li><strong>WHERE</strong>: Memfilter baris sebelum pengelompokan</li>
+                    <li><strong>HAVING</strong>: Memfilter grup setelah pengelompokan</li>
+                </ul>
+
+                <div class="code-example">
+                    <code>
+-- WHERE memfilter sebelum GROUP BY<br>
+SELECT kota, COUNT(*) as jumlah<br>
+FROM siswa<br>
+WHERE umur > 19          -- Filtra baris dulu<br>
+GROUP BY kota;<br>
+<br>
+-- HAVING memfilter setelah GROUP BY<br>
+SELECT kota, COUNT(*) as jumlah<br>
+FROM siswa<br>
+GROUP BY kota<br>
+HAVING COUNT(*) > 1;     -- Filtra grup<br>
+<br>
+-- Menggunakan keduanya<br>
+SELECT kota, COUNT(*) as jumlah<br>
+FROM siswa<br>
+WHERE umur > 18<br>
+GROUP BY kota<br>
+HAVING COUNT(*) >= 1;<br>
+                    </code>
+                </div>
+
+                <h3>Contoh Query Kompleks</h3>
+                <p>Berikut adalah contoh query yang menggabungkan SELECT, FROM, WHERE, GROUP BY, dan HAVING:</p>
+
+                <div class="code-example">
+                    <code>
+-- Cari kota dengan rata-rata umur minimum 20 tahun<br>
+-- dan memiliki minimal 2 siswa<br>
+SELECT kota,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;COUNT(*) as jumlah_siswa,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;AVG(umur) as rata_rata_umur<br>
+FROM siswa<br>
+WHERE umur >= 18<br>
+GROUP BY kota<br>
+HAVING COUNT(*) >= 2<br>
+  AND AVG(umur) >= 20;<br>
+                    </code>
+                </div>
+
+                <h3>DISTINCT</h3>
+                <p>DISTINCT digunakan untuk menampilkan nilai unik/berbeda saja, menghilangkan duplikasi.</p>
+
+                <div class="code-example">
+                    <code>
+-- Kota-kota unik yang ada di tabel siswa<br>
+SELECT DISTINCT kota FROM siswa;<br>
+<br>
+-- Output:<br>
+-- kota<br>
+-- Jakarta<br>
+-- Bandung<br>
+-- Surabaya<br>
+                    </code>
+                </div>
+
+                <h3>COUNT DISTINCT</h3>
+                <p>Menghitung jumlah nilai unik.</p>
+
+                <div class="code-example">
+                    <code>
+-- Berapa banyak kota yang berbeda<br>
+SELECT COUNT(DISTINCT kota) as jumlah_kota<br>
+FROM siswa;<br>
+<br>
+-- Output:<br>
+-- jumlah_kota<br>
+-- 3<br>
+                    </code>
+                </div>
+
+                <div class="tip">
+                    <strong>💡 Tips:</strong>
+                    <p>GROUP BY harus mencakup semua kolom yang di-SELECT yang bukan fungsi agregat. Gunakan HAVING untuk memfilter hasil agregat, bukan WHERE yang tidak akan bekerja dengan fungsi agregat.</p>
+                </div>
+
+                <h3>Ringkasan Pelajaran</h3>
+                <ul>
+                    <li>Fungsi agregat: COUNT(), SUM(), AVG(), MAX(), MIN()</li>
+                    <li>GROUP BY mengelompokkan baris dengan nilai yang sama</li>
+                    <li>HAVING memfilter grup berdasarkan hasil agregat</li>
+                    <li>WHERE memfilter sebelum GROUP BY, HAVING setelah</li>
+                    <li>DISTINCT menampilkan nilai unik</li>
+                    <li>COUNT(DISTINCT) menghitung nilai unik</li>
+                    <li>Kombinasi GROUP BY dan HAVING menghasilkan analisis yang powerful</li>
+                </ul>
+
+                <div class="navigation">
+                    <a href="sql-02.html" class="btn">← Pelajaran Sebelumnya</a>
+                    <a href="sql-04.html" class="btn">Pelajaran Selanjutnya →</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kaggle Learn Indonesia</p>
+        </div>
+    </footer>
+</body>
+</html>

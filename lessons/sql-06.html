@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menggabungkan Data - Kaggle Learn Indonesia</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="../sql.html" class="back-btn">← Kembali ke SQL</a>
+            <h1>Menggabungkan Data (JOIN)</h1>
+            <p class="tagline">Pelajaran 6: Menggabungkan Data dari Multiple Tabel</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="lesson-content">
+                <h2>📚 Menggabungkan Data (JOIN) - Pelajaran 6</h2>
+
+                <h3>Apa itu JOIN?</h3>
+                <p>JOIN digunakan untuk menggabungkan data dari dua atau lebih tabel berdasarkan kolom yang sama. JOIN memungkinkan Anda mengambil data dari berbagai tabel dan menampilkannya dalam satu hasil.</p>
+
+                <h3>Jenis-jenis JOIN</h3>
+                <p>Ada beberapa jenis JOIN dalam SQL:</p>
+
+                <ul>
+                    <li><strong>INNER JOIN</strong> - Mengembalikan baris yang cocok di kedua tabel</li>
+                    <li><strong>LEFT JOIN</strong> - Mengembalikan semua baris dari tabel kiri dan baris yang cocok dari tabel kanan</li>
+                    <li><strong>RIGHT JOIN</strong> - Mengembalikan semua baris dari tabel kanan dan baris yang cocok dari tabel kiri</li>
+                    <li><strong>FULL OUTER JOIN</strong> - Mengembalikan semua baris dari kedua tabel</li>
+                    <li><strong>CROSS JOIN</strong> - Mengembalikan hasil perkalian silang (Cartesian product)</li>
+                </ul>
+
+                <h3>Setup Contoh Data</h3>
+                <p>Untuk memahami JOIN, kita akan menggunakan dua tabel: siswa dan kelas.</p>
+
+                <div class="code-example">
+                    <code>
+Tabel: siswa<br>
+| id | nama  | kelas_id |<br>
+| 1  | Budi  | 1        |<br>
+| 2  | Ani   | 2        |<br>
+| 3  | Citra | 1        |<br>
+<br>
+Tabel: kelas<br>
+| id | nama_kelas | guru    |<br>
+| 1  | X-A        | Pak Ali |<br>
+| 2  | X-B        | Bu Nur  |<br>
+| 3  | X-C        | Pak Budi|<br>
+                    </code>
+                </div>
+
+                <h3>INNER JOIN</h3>
+                <p>INNER JOIN mengembalikan hanya baris yang memiliki kecocokan di kedua tabel.</p>
+
+                <div class="code-example">
+                    <code>
+SELECT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;s.nama,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;k.nama_kelas,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;k.guru<br>
+FROM siswa s<br>
+INNER JOIN kelas k ON s.kelas_id = k.id;<br>
+<br>
+-- Output:<br>
+-- | nama  | nama_kelas | guru    |<br>
+-- | Budi  | X-A        | Pak Ali |<br>
+-- | Ani   | X-B        | Bu Nur  |<br>
+-- | Citra | X-A        | Pak Ali |<br>
+                    </code>
+                </div>
+
+                <h3>LEFT JOIN</h3>
+                <p>LEFT JOIN mengembalikan semua baris dari tabel kiri dan baris yang cocok dari tabel kanan. Jika tidak ada kecocokan, kolom dari tabel kanan akan berisi NULL.</p>
+
+                <div class="code-example">
+                    <code>
+SELECT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;k.nama_kelas,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;COUNT(s.id) as jumlah_siswa<br>
+FROM kelas k<br>
+LEFT JOIN siswa s ON k.id = s.kelas_id<br>
+GROUP BY k.nama_kelas;<br>
+<br>
+-- Output:<br>
+-- | nama_kelas | jumlah_siswa |<br>
+-- | X-A        | 2            |<br>
+-- | X-B        | 1            |<br>
+-- | X-C        | 0            | (tidak ada siswa)<br>
+                    </code>
+                </div>
+
+                <h3>RIGHT JOIN</h3>
+                <p>RIGHT JOIN adalah kebalikan dari LEFT JOIN. Mengembalikan semua baris dari tabel kanan dan baris yang cocok dari tabel kiri.</p>
+
+                <div class="code-example">
+                    <code>
+-- Catatan: BigQuery tidak mendukung RIGHT JOIN secara langsung<br>
+-- Gunakan LEFT JOIN dengan urutan tabel terbalik<br>
+SELECT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;s.nama,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;k.nama_kelas<br>
+FROM kelas k<br>
+LEFT JOIN siswa s ON k.id = s.kelas_id;<br>
+                    </code>
+                </div>
+
+                <h3>FULL OUTER JOIN</h3>
+                <p>FULL OUTER JOIN mengembalikan semua baris dari kedua tabel. Jika tidak ada kecocokan, kolom akan berisi NULL.</p>
+
+                <div class="code-example">
+                    <code>
+-- BigQuery menggunakan FULL OUTER JOIN<br>
+SELECT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;COALESCE(s.id, k.id) as id,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;s.nama,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;k.nama_kelas<br>
+FROM siswa s<br>
+FULL OUTER JOIN kelas k ON s.kelas_id = k.id;<br>
+                    </code>
+                </div>
+
+                <h3>CROSS JOIN</h3>
+                <p>CROSS JOIN menghasilkan hasil perkalian silang (Cartesian product) dari dua tabel.</p>
+
+                <div class="code-example">
+                    <code>
+-- Setiap siswa dengan setiap kelas (kombinasi)<br>
+SELECT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;s.nama,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;k.nama_kelas<br>
+FROM siswa s<br>
+CROSS JOIN kelas k;<br>
+<br>
+-- Output: 3 siswa * 3 kelas = 9 baris<br>
+                    </code>
+                </div>
+
+                <h3>Multiple JOINs</h3>
+                <p>Anda dapat menggabungkan lebih dari dua tabel dengan multiple JOINs.</p>
+
+                <div class="code-example">
+                    <code>
+-- Asumsikan ada tabel: siswa, kelas, sekolah<br>
+SELECT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;s.nama,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;k.nama_kelas,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sk.nama_sekolah<br>
+FROM siswa s<br>
+INNER JOIN kelas k ON s.kelas_id = k.id<br>
+INNER JOIN sekolah sk ON k.sekolah_id = sk.id;<br>
+                    </code>
+                </div>
+
+                <h3>Self Join</h3>
+                <p>Self Join adalah JOIN dari tabel dengan dirinya sendiri. Berguna untuk membandingkan baris dalam tabel yang sama.</p>
+
+                <div class="code-example">
+                    <code>
+-- Asumsikan tabel siswa memiliki kolom sponsor_id<br>
+SELECT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;s1.nama as siswa,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;s2.nama as sponsor<br>
+FROM siswa s1<br>
+LEFT JOIN siswa s2 ON s1.sponsor_id = s2.id;<br>
+                    </code>
+                </div>
+
+                <h3>JOIN dengan WHERE Clause</h3>
+                <p>JOIN dapat dikombinasikan dengan WHERE untuk memfilter hasil.</p>
+
+                <div class="code-example">
+                    <code>
+-- Siswa dari guru Pak Ali<br>
+SELECT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;s.nama,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;k.nama_kelas<br>
+FROM siswa s<br>
+INNER JOIN kelas k ON s.kelas_id = k.id<br>
+WHERE k.guru = 'Pak Ali';<br>
+                    </code>
+                </div>
+
+                <h3>UNION</h3>
+                <p>UNION menggabungkan hasil dari dua atau lebih query SELECT. Setiap SELECT harus memiliki jumlah kolom yang sama.</p>
+
+                <div class="code-example">
+                    <code>
+-- Gabungkan dua SELECT<br>
+SELECT nama FROM siswa WHERE kelas_id = 1<br>
+UNION<br>
+SELECT nama FROM siswa WHERE kelas_id = 2;<br>
+<br>
+-- UNION ALL (termasuk duplikat)<br>
+SELECT nama FROM siswa WHERE kelas_id = 1<br>
+UNION ALL<br>
+SELECT nama FROM siswa WHERE kelas_id = 2;<br>
+                    </code>
+                </div>
+
+                <h3>Diagram Visual JOIN</h3>
+                <p>Untuk memahami JOIN lebih baik, berikut adalah diagram visual:</p>
+
+                <div class="code-example">
+                    <code>
+INNER JOIN:        Tabel A ∩ Tabel B<br>
+LEFT JOIN:         Tabel A ∪ (Tabel A ∩ Tabel B)<br>
+RIGHT JOIN:        Tabel B ∪ (Tabel A ∩ Tabel B)<br>
+FULL OUTER JOIN:   Tabel A ∪ Tabel B<br>
+                    </code>
+                </div>
+
+                <h3>Best Practices untuk JOIN</h3>
+                <ul>
+                    <li>Selalu gunakan alias tabel untuk clarity</li>
+                    <li>Pastikan join key (kolom yang digunakan) memiliki tipe data yang sama</li>
+                    <li>Gunakan INNER JOIN jika Anda hanya butuh data yang cocok</li>
+                    <li>Gunakan LEFT JOIN jika Anda ingin semua data dari tabel kiri</li>
+                    <li>Index join key untuk performa yang lebih baik</li>
+                    <li>Hindari multiple JOINs jika tidak perlu</li>
+                </ul>
+
+                <div class="tip">
+                    <strong>💡 Tips:</strong>
+                    <p>JOIN adalah konsep penting dalam SQL. Pahami perbedaan antara INNER, LEFT, dan FULL OUTER JOIN. Jangan ragu untuk menggunakan multiple JOINs jika diperlukan, tetapi pastikan query tetap mudah dibaca dengan menggunakan CTE.</p>
+                </div>
+
+                <h3>Ringkasan Pelajaran</h3>
+                <ul>
+                    <li>JOIN menggabungkan data dari multiple tabel</li>
+                    <li>INNER JOIN mengembalikan hanya baris yang cocok</li>
+                    <li>LEFT JOIN mengembalikan semua dari tabel kiri</li>
+                    <li>FULL OUTER JOIN mengembalikan semua dari kedua tabel</li>
+                    <li>CROSS JOIN menghasilkan hasil perkalian silang</li>
+                    <li>Self Join digunakan untuk membandingkan baris dalam tabel yang sama</li>
+                    <li>UNION menggabungkan hasil dari multiple queries</li>
+                    <li>Selalu gunakan alias untuk clarity dan performa</li>
+                </ul>
+
+                <div class="navigation">
+                    <a href="sql-05.html" class="btn">← Pelajaran Sebelumnya</a>
+                    <a href="../sql.html" class="btn">← Kembali ke SQL</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kaggle Learn Indonesia</p>
+        </div>
+    </footer>
+</body>
+</html>

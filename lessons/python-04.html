@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar (Lists) - Kaggle Learn Indonesia</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="../python.html" class="back-btn">← Kembali ke Python</a>
+            <h1>Daftar (Lists)</h1>
+            <p class="tagline">Pelajaran 4: Struktur Data List dan Manipulasinya</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="lesson-content">
+                <h2>📚 Daftar (Lists) - Pelajaran 4</h2>
+
+                <h3>Apa itu List?</h3>
+                <p>List adalah struktur data yang menyimpan kumpulan elemen dalam urutan tertentu. List dapat berisi elemen dengan tipe data yang berbeda-beda. List ditulis dengan elemen-elemen dipisahkan oleh koma dan dikelilingi oleh tanda kurung siku <code>[]</code>.</p>
+
+                <div class="code-example">
+                    <code>
+# Membuat list<br>
+buah = ["apel", "mangga", "jeruk"]<br>
+angka = [1, 2, 3, 4, 5]<br>
+campuran = [1, "dua", 3.0, True]<br>
+list_kosong = []<br>
+                    </code>
+                </div>
+
+                <h3>Mengakses Elemen List</h3>
+                <p>Setiap elemen dalam list memiliki indeks (posisi). Indeks dimulai dari 0. Gunakan indeks untuk mengakses elemen tertentu.</p>
+
+                <div class="code-example">
+                    <code>
+buah = ["apel", "mangga", "jeruk", "pisang"]<br>
+<br>
+print(buah[0])   # Output: apel (elemen pertama)<br>
+print(buah[1])   # Output: mangga (elemen kedua)<br>
+print(buah[-1])  # Output: pisang (elemen terakhir)<br>
+print(buah[-2])  # Output: jeruk (elemen kedua dari belakang)<br>
+                    </code>
+                </div>
+
+                <h3>Slicing List</h3>
+                <p>Slicing memungkinkan Anda mengambil sebagian dari list dengan menentukan rentang indeks.</p>
+
+                <div class="code-example">
+                    <code>
+buah = ["apel", "mangga", "jeruk", "pisang", "nanas"]<br>
+<br>
+print(buah[1:3])    # Output: ['mangga', 'jeruk']<br>
+print(buah[:3])     # Output: ['apel', 'mangga', 'jeruk']<br>
+print(buah[2:])     # Output: ['jeruk', 'pisang', 'nanas']<br>
+print(buah[::2])    # Output: ['apel', 'jeruk', 'nanas'] (setiap 2)<br>
+                    </code>
+                </div>
+
+                <h3>Mengubah Elemen List</h3>
+                <p>Anda dapat mengubah nilai elemen dalam list dengan mengaksesnya melalui indeks.</p>
+
+                <div class="code-example">
+                    <code>
+buah = ["apel", "mangga", "jeruk"]<br>
+<br>
+buah[1] = "anggur"<br>
+print(buah)  # Output: ['apel', 'anggur', 'jeruk']<br>
+                    </code>
+                </div>
+
+                <h3>Menambah Elemen (Append)</h3>
+                <p>Gunakan metode <code>append()</code> untuk menambah elemen baru di akhir list.</p>
+
+                <div class="code-example">
+                    <code>
+buah = ["apel", "mangga"]<br>
+buah.append("jeruk")<br>
+print(buah)  # Output: ['apel', 'mangga', 'jeruk']<br>
+                    </code>
+                </div>
+
+                <h3>Menghapus Elemen</h3>
+                <p>Ada beberapa cara untuk menghapus elemen dari list.</p>
+
+                <div class="code-example">
+                    <code>
+buah = ["apel", "mangga", "jeruk", "pisang"]<br>
+<br>
+# Menggunakan remove() - menghapus berdasarkan nilai<br>
+buah.remove("mangga")<br>
+print(buah)  # Output: ['apel', 'jeruk', 'pisang']<br>
+<br>
+# Menggunakan pop() - menghapus berdasarkan indeks<br>
+elemen = buah.pop(1)<br>
+print(elemen)  # Output: jeruk<br>
+print(buah)    # Output: ['apel', 'pisang']<br>
+<br>
+# Menggunakan del - menghapus elemen pada indeks<br>
+del buah[0]<br>
+print(buah)  # Output: ['pisang']<br>
+                    </code>
+                </div>
+
+                <h3>Panjang List</h3>
+                <p>Gunakan fungsi <code>len()</code> untuk mengetahui jumlah elemen dalam list.</p>
+
+                <div class="code-example">
+                    <code>
+buah = ["apel", "mangga", "jeruk"]<br>
+print(len(buah))  # Output: 3<br>
+                    </code>
+                </div>
+
+                <h3>Mengurutkan List</h3>
+                <p>Gunakan metode <code>sort()</code> untuk mengurutkan elemen dalam list.</p>
+
+                <div class="code-example">
+                    <code>
+angka = [3, 1, 4, 1, 5, 9, 2, 6]<br>
+angka.sort()<br>
+print(angka)  # Output: [1, 1, 2, 3, 4, 5, 6, 9]<br>
+<br>
+buah = ["jeruk", "apel", "mangga"]<br>
+buah.sort()<br>
+print(buah)  # Output: ['apel', 'jeruk', 'mangga']<br>
+                    </code>
+                </div>
+
+                <h3>Memeriksa Keberadaan Elemen</h3>
+                <p>Gunakan operator <code>in</code> untuk memeriksa apakah elemen ada dalam list.</p>
+
+                <div class="code-example">
+                    <code>
+buah = ["apel", "mangga", "jeruk"]<br>
+<br>
+print("apel" in buah)      # Output: True<br>
+print("pisang" in buah)    # Output: False<br>
+print("apel" not in buah)  # Output: False<br>
+                    </code>
+                </div>
+
+                <h3>List Comprehension (Dasar)</h3>
+                <p>List comprehension adalah cara singkat untuk membuat list baru berdasarkan list yang sudah ada.</p>
+
+                <div class="code-example">
+                    <code>
+angka = [1, 2, 3, 4, 5]<br>
+kuadrat = [x**2 for x in angka]<br>
+print(kuadrat)  # Output: [1, 4, 9, 16, 25]<br>
+                    </code>
+                </div>
+
+                <div class="tip">
+                    <strong>💡 Tips:</strong>
+                    <p>List dalam Python sangat fleksibel. Anda dapat menggabungkan dua list dengan operator <code>+</code> atau mengalikan list dengan bilangan bulat untuk mengulanginya.</p>
+                </div>
+
+                <h3>Ringkasan Pelajaran</h3>
+                <ul>
+                    <li>List adalah kumpulan elemen yang terurut dan dapat diubah</li>
+                    <li>Indeks dimulai dari 0</li>
+                    <li>Indeks negatif dapat digunakan untuk mengakses elemen dari belakang</li>
+                    <li>Slicing memungkinkan Anda mengambil bagian dari list</li>
+                    <li>Metode seperti append(), remove(), pop() untuk memanipulasi list</li>
+                    <li>sort() untuk mengurutkan list</li>
+                    <li>Gunakan <code>in</code> untuk memeriksa keberadaan elemen</li>
+                </ul>
+
+                <div class="navigation">
+                    <a href="python-03.html" class="btn">← Pelajaran Sebelumnya</a>
+                    <a href="python-05.html" class="btn">Pelajaran Selanjutnya →</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kaggle Learn Indonesia</p>
+        </div>
+    </footer>
+</body>
+</html>

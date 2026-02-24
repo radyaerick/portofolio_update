@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolean dan Kondisional - Kaggle Learn Indonesia</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="../python.html" class="back-btn">← Kembali ke Python</a>
+            <h1>Boolean dan Kondisional</h1>
+            <p class="tagline">Pelajaran 3: Pengambilan Keputusan dalam Program</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="lesson-content">
+                <h2>📚 Boolean dan Kondisional - Pelajaran 3</h2>
+
+                <h3>Apa itu Boolean?</h3>
+                <p>Boolean adalah tipe data yang hanya memiliki dua nilai: <code>True</code> (Benar) atau <code>False</code> (Salah). Boolean sering digunakan dalam kondisional dan perulangan untuk membuat keputusan dalam program.</p>
+
+                <div class="code-example">
+                    <code>
+# Variabel Boolean<br>
+is_raining = True<br>
+is_sunny = False<br>
+<br>
+print(is_raining)  # Output: True<br>
+print(is_sunny)    # Output: False<br>
+                    </code>
+                </div>
+
+                <h3>Operator Perbandingan</h3>
+                <p>Operator perbandingan digunakan untuk membandingkan dua nilai dan menghasilkan nilai Boolean.</p>
+
+                <div class="code-example">
+                    <code>
+a = 10<br>
+b = 5<br>
+<br>
+print(a > b)   # True (a lebih besar dari b)<br>
+print(a < b)   # False (a lebih kecil dari b)<br>
+print(a == b)  # False (a sama dengan b)<br>
+print(a != b)  # True (a tidak sama dengan b)<br>
+print(a >= b)  # True (a lebih besar atau sama dengan b)<br>
+print(a <= b)  # False (a lebih kecil atau sama dengan b)<br>
+                    </code>
+                </div>
+
+                <h3>Operator Logika</h3>
+                <p>Operator logika digunakan untuk menggabungkan dua atau lebih kondisi Boolean.</p>
+
+                <ul>
+                    <li><code>and</code> - Benar jika semua kondisi benar</li>
+                    <li><code>or</code> - Benar jika salah satu kondisi benar</li>
+                    <li><code>not</code> - Membalikkan nilai Boolean</li>
+                </ul>
+
+                <div class="code-example">
+                    <code>
+x = 10<br>
+y = 5<br>
+<br>
+print(x > 5 and y > 3)    # True (kedua kondisi benar)<br>
+print(x > 5 and y > 10)   # False (salah satu kondisi salah)<br>
+print(x > 5 or y > 10)    # True (salah satu kondisi benar)<br>
+print(not(x > 5))         # False (membalikkan True menjadi False)<br>
+                    </code>
+                </div>
+
+                <h3>Pernyataan If</h3>
+                <p>Pernyataan <code>if</code> memungkinkan Anda menjalankan blok kode hanya jika kondisi tertentu terpenuhi.</p>
+
+                <div class="code-example">
+                    <code>
+umur = 18<br>
+<br>
+if umur >= 18:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print("Anda sudah dewasa")<br>
+                    </code>
+                </div>
+
+                <h3>Pernyataan If-Else</h3>
+                <p>Pernyataan <code>if-else</code> memungkinkan Anda menjalankan satu blok kode jika kondisi benar, dan blok kode lain jika kondisi salah.</p>
+
+                <div class="code-example">
+                    <code>
+umur = 15<br>
+<br>
+if umur >= 18:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print("Anda sudah dewasa")<br>
+else:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print("Anda masih anak-anak")<br>
+                    </code>
+                </div>
+
+                <h3>Pernyataan If-Elif-Else</h3>
+                <p>Pernyataan <code>elif</code> (else if) memungkinkan Anda menguji kondisi tambahan jika kondisi pertama salah.</p>
+
+                <div class="code-example">
+                    <code>
+nilai = 85<br>
+<br>
+if nilai >= 90:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print("Nilai A - Sangat Baik")<br>
+elif nilai >= 80:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print("Nilai B - Baik")<br>
+elif nilai >= 70:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print("Nilai C - Cukup")<br>
+else:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print("Nilai D - Kurang")<br>
+                    </code>
+                </div>
+
+                <h3>Nested If (If Bersarang)</h3>
+                <p>Anda dapat menempatkan pernyataan <code>if</code> di dalam pernyataan <code>if</code> lain.</p>
+
+                <div class="code-example">
+                    <code>
+umur = 20<br>
+memiliki_sim = True<br>
+<br>
+if umur >= 18:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if memiliki_sim:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Anda boleh berkendara")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Anda perlu SIM terlebih dahulu")<br>
+else:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print("Anda terlalu muda untuk berkendara")<br>
+                    </code>
+                </div>
+
+                <h3>Ternary Operator (Operator Ternari)</h3>
+                <p>Ternary operator adalah cara singkat untuk menulis pernyataan if-else dalam satu baris.</p>
+
+                <div class="code-example">
+                    <code>
+umur = 20<br>
+status = "Dewasa" if umur >= 18 else "Anak-anak"<br>
+print(status)  # Output: Dewasa<br>
+                    </code>
+                </div>
+
+                <div class="tip">
+                    <strong>💡 Tips:</strong>
+                    <p>Indentasi (spasi di awal baris) sangat penting dalam Python. Blok kode yang termasuk dalam if atau else harus memiliki indentasi yang konsisten.</p>
+                </div>
+
+                <h3>Ringkasan Pelajaran</h3>
+                <ul>
+                    <li>Boolean adalah tipe data dengan nilai True atau False</li>
+                    <li>Operator perbandingan (&gt;, &lt;, ==, !=, &gt;=, &lt;=) menghasilkan Boolean</li>
+                    <li>Operator logika (and, or, not) menggabungkan kondisi Boolean</li>
+                    <li>Pernyataan if digunakan untuk membuat keputusan</li>
+                    <li>Elif memungkinkan menguji kondisi tambahan</li>
+                    <li>Indentasi adalah bagian penting dari sintaks Python</li>
+                </ul>
+
+                <div class="navigation">
+                    <a href="python-02.html" class="btn">← Pelajaran Sebelumnya</a>
+                    <a href="python-04.html" class="btn">Pelajaran Selanjutnya →</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kaggle Learn Indonesia</p>
+        </div>
+    </footer>
+</body>
+</html>
